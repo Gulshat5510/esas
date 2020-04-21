@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Leadhero-Overview" transform="translate(-1223.000000, -27.000000)" fill="#444444">
+            <path d="M1223.70711,28.7071068 L1227.29289,32.2928932 C1227.68342,32.6834175 1228.31658,32.6834175 1228.70711,32.2928932 L1232.29289,28.7071068 C1232.68342,28.3165825 1232.68342,27.6834175 1232.29289,27.2928932 C1232.10536,27.1053568 1231.851,27 1231.58579,27 L1224.41421,27 C1223.86193,27 1223.41421,27.4477153 1223.41421,28 C1223.41421,28.2652165 1223.51957,28.5195704 1223.70711,28.7071068 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

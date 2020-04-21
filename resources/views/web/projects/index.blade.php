@@ -1,0 +1,43 @@
+@extends('layouts.web')
+
+@section('title') Проекты | @endsection
+
+@section('content')
+  <section id="projects">
+    <div class="controls">
+      <button type="button" class="control" data-filter="all">Все</button>
+      @foreach($categories as $category)
+        <button type="button" class="control" data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
+      @endforeach
+    </div>
+
+    <div class="projects">
+      @foreach($projects as $project)
+        <div class="mix @foreach($project->categories as $category) {{ $category->slug }} @endforeach">
+          <div class="project-item">
+            <a href="{{ route('projects.show', $project->id) }}">
+              <figure>
+                <img src="{{ $project->getFirstImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
+                <figcaption>
+                  <div class="title">{{ $project->name }}</div>
+                  <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+        </div>
+      @endforeach
+      <div class="gap"></div>
+      <div class="gap"></div>
+      <div class="gap"></div>
+    </div>
+  </section>
+@endsection
+
+@section('js')
+  <script src="{{ asset('js/mixitup.min.js') }}"></script>
+  <script>
+      let containerEl = $('.projects');
+      let mixer = mixitup(containerEl);
+  </script>
+@endsection
