@@ -1,10 +1,9 @@
 @extends('layouts.web')
 
-@section('title') Контакты | @endsection
+@section('title') @lang('main.contact_us') | @endsection
 
 @section('flash-message')
   <div id="messages">
-    <div id="coming" class="alert alert-success d-none">Coming soon</div>
     @if(session('success'))
       <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -17,8 +16,8 @@
   <section id="contact">
     <div class="row">
       <div class="col-lg-6">
-        <h4>Контакты</h4>
-        <p class="contact-desc">Ашхабад, улица Московская, дом Айболек</p>
+        <h4>@lang('main.contacts')</h4>
+        <p class="contact-desc">@lang('main.address')</p>
         <ul class="lists">
           <li><a href="mailto:contact@gurban.com">contact@gurban.com</a></li>
           <li><a href="tel:+99361256547">+(993) 61 256547</a></li>
@@ -26,47 +25,47 @@
       </div>
 
       <div class="col-lg-6 from-col">
-        <h4>Обсудим ваш проект?</h4>
-        <p class="contact-desc light">Заполните форму ниже и мы свяжемся с вами в ближайшее время.</p>
+        <h4>@lang('main.discuss_your_project')</h4>
+        <p class="contact-desc light">@lang('main.fill_form')</p>
         <form action="{{ route('contact.store') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
           @csrf
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" aria-label="name" value="{{ old('name') }}" placeholder="Имя"
-                       required autofocus>
+                <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" aria-label="name" value="{{ old('name') }}"
+                       placeholder="@lang('main.name')" required autofocus>
                 @if ($errors->has('name'))
                   <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name') }}</strong></span>
                 @else
-                  <span class="invalid-feedback" role="alert"><strong>Hökman adyňyzy ýazmaly</strong></span>
+                  <span class="invalid-feedback" role="alert"><strong>@lang('main.name_required')</strong></span>
                 @endif
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="text" name="phone" class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" aria-label="phone" value="{{ old('phone') }}"
-                       placeholder="Телефон" required>
+                       placeholder="@lang('main.phone')" required>
                 @if ($errors->has('phone'))
                   <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('phone') }}</strong></span>
                 @else
-                  <span class="invalid-feedback" role="alert"><strong>Hökman telefon nomer ýazmaly</strong></span>
+                  <span class="invalid-feedback" role="alert"><strong>@lang('main.phone_required')</strong></span>
                 @endif
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" aria-label="email" value="{{ old('email') }}"
-                       placeholder="Почта" required>
+                       placeholder="@lang('main.email')" required>
                 @if ($errors->has('email'))
                   <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('email') }}</strong></span>
                 @else
-                  <span class="invalid-feedback" role="alert"><strong>Hökman email ýazmaly</strong></span>
+                  <span class="invalid-feedback" role="alert"><strong>@lang('main.email_required')</strong></span>
                 @endif
               </div>
             </div>
             <div class="col-sm-6">
               <div class="custom-file">
-                <button type="button" class="{{ $errors->has('file') ? 'is-invalid' : '' }}">Прикрепить файл</button>
+                <button type="button" class="{{ $errors->has('file') ? 'is-invalid' : '' }}">@lang('main.attach_file')</button>
                 <input type="file" name="file" class="d-none" aria-label="file" placeholder="file">
                 @if ($errors->has('file'))
                   <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('file') }}</strong></span>
@@ -75,16 +74,16 @@
             </div>
             <div class="col-12">
               <div class="form-group">
-                <textarea name="msg" class="form-control {{ $errors->has('msg') ? 'is-invalid' : '' }}" aria-label="msg" placeholder="Сообщения"
+                <textarea name="msg" class="form-control {{ $errors->has('msg') ? 'is-invalid' : '' }}" aria-label="msg" placeholder="@lang('main.messages')"
                           required>{{ old('msg') }}</textarea>
                 @if ($errors->has('msg'))
                   <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('msg') }}</strong></span>
                 @else
-                  <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
+                  <span class="invalid-feedback" role="alert"><strong>@lang('main.message_required')</strong></span>
                 @endif
               </div>
             </div>
-            <button class="btn btn-with" type="submit">Отправить <span><i data-icon="arrow"></i></span></button>
+            <button class="btn btn-with" type="submit">@lang('main.send') <span><i data-icon="arrow"></i></span></button>
           </div>
         </form>
       </div>

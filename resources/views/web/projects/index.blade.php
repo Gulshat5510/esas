@@ -1,11 +1,11 @@
 @extends('layouts.web')
 
-@section('title') Проекты | @endsection
+@section('title') @lang('main.projects') | @endsection
 
 @section('content')
   <section id="projects">
     <div class="controls">
-      <button type="button" class="control" data-mixitup-control data-filter="all">Все</button>
+      <button type="button" class="control" data-mixitup-control data-filter="all">@lang('main.all')</button>
       @foreach($categories as $category)
         <button type="button" class="control" data-mixitup-control data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
       @endforeach

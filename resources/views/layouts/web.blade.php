@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@yield('title') Esas &nbsp; · &nbsp; Брендинговое агентство </title>
+  <title>@yield('title') @lang('main.brand') </title>
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   @yield('css')
 </head>
@@ -21,9 +21,9 @@
 
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">Проекты</a></li>
-        <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">О нас</a></li>
-        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">Контакты</a></li>
+        <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">@lang('main.projects')</a></li>
+        <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">@lang('main.about_us')</a></li>
+        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">@lang('main.contact_us')</a></li>
       </ul>
     </div>
   </div>
@@ -35,7 +35,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="copyright">esas&copy; {{ date('Y') }} — Брендинговое агентство</div>
+        <div class="copyright">esas&copy; {{ date('Y') }} — @lang('main.branding_agency')</div>
       </div>
       <div class="col-md-6">
         <ul class="social-lists til-sm-text-right">

@@ -1,13 +1,13 @@
 @extends('layouts.web')
 
-@section('title') {{ $project->name }} · Проекты | @endsection
+@section('title') {{ $project->name }} · @lang('main.projects') | @endsection
 
 @section('content')
   <section id="show">
     <div class="row">
       <div class="col-lg-6">
         <h4>{{ $project->name }}</h4>
-        <h6>Что мы сделали:</h6>
+        <h6>@lang('main.what_have_we_done'):</h6>
         <ul class="categories">
           @foreach($project->categories as $category)
             <li>{{ $category->name }}</li>
@@ -31,12 +31,12 @@
       </div>
 
       <ul class="owner">
-        <li>Клиент: {{ $project->client }}</li>
-        <li>{{ $project->year }} год</li>
+        <li>@lang('main.client'): {{ $project->client }}</li>
+        <li>{{ $project->year }} @lang('main.year')</li>
       </ul>
     </div>
 
-    <h6 class="dark">Другие работы</h6>
+    <h6 class="dark">@lang('main.other_works')</h6>
 
     <div class="row">
       @foreach($projects as $project)
@@ -57,7 +57,7 @@
     </div>
 
     <div class="more">
-      <a href="{{ route('projects') }}">Все проекты <span><i data-icon="arrow"></i></span></a>
+      <a href="{{ route('projects') }}">@lang('main.all_projects') <span><i data-icon="arrow"></i></span></a>
     </div>
   </section>
 @endsection

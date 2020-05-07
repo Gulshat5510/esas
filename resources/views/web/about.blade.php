@@ -1,6 +1,6 @@
 @extends('layouts.web')
 
-@section('title') О нас | @endsection
+@section('title') @lang('main.about_us') | @endsection
 
 @section('content')
   <section id="about">
@@ -12,26 +12,26 @@
       </div>
     @endif
 
-    <h4 class="heading">Направления услуг</h4>
+    <h4 class="heading">@lang('main.service_directions')</h4>
 
     <div class="row services">
       <div class="col-lg-6">
         <div class="row">
           <div class="col-sm-6">
-            <h4>Стратегия</h4>
+            <h4>@lang('main.strategy')</h4>
             <ul>
-              <li>Исследования и аналитика</li>
-              <li>Бренд платформа</li>
-              <li>Нейминг</li>
+              <li>@lang('main.research_and_analytics')</li>
+              <li>@lang('main.brand_platform')</li>
+              <li>@lang('main.naming')</li>
             </ul>
           </div>
           <div class="col-sm-6">
-            <h4>Дизайн</h4>
+            <h4>@lang('main.design')</h4>
             <ul>
-              <li>Системы идентификации</li>
-              <li>Дизайн упаковки</li>
-              <li>Веб дизайн</li>
-              <li>Дизайн носителей</li>
+              <li>@lang('main.identification_systems')</li>
+              <li>@lang('main.package_design')</li>
+              <li>@lang('main.web_design')</li>
+              <li>@lang('main.media_design')</li>
             </ul>
           </div>
         </div>
@@ -39,20 +39,19 @@
       <div class="col-lg-6">
         <div class="row">
           <div class="col-sm-6">
-            <h4>Графика</h4>
+            <h4>@lang('main.graphics')</h4>
             <ul>
-              <li>Иллюстрации</li>
-              <li>Бренд платформа</li>
-              <li>Анимация</li>
-              <li>Постеры</li>
+              <li>@lang('main.illustration')</li>
+              <li>@lang('main.animation')</li>
+              <li>@lang('main.posters')</li>
             </ul>
           </div>
           <div class="col-sm-6">
-            <h4>Дизайн среды</h4>
+            <h4>@lang('main.environment_design')</h4>
             <ul>
-              <li>Интерьер</li>
-              <li>Выстовычный павильены</li>
-              <li>3D визуализация</li>
+              <li>@lang('main.interior')</li>
+              <li>@lang('main.exhibition_pavilion')</li>
+              <li>@lang('main.3d_render')</li>
             </ul>
           </div>
         </div>

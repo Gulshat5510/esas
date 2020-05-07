@@ -2,7 +2,7 @@
 
 @section('content')
   <section id="home">
-    <h4 class="home">Мы создаем бренды, айдентику и занимаемся графическим дизайном</h4>
+    <h4 class="home">@lang('main.home_paragraph')</h4>
 
     <div class="row">
       @foreach($projects as $project)
