@@ -15,7 +15,6 @@
 @endsection
 @section('content')
   <section id="contact">
-
     <div class="row">
       <div class="col-lg-6">
         <h4>Контакты</h4>
@@ -85,7 +84,7 @@
                 @endif
               </div>
             </div>
-            <button class="btn btn-with" type="submit">Отправит <span><i data-icon="arrow"></i></span></button>
+            <button class="btn btn-with" type="submit">Отправить <span><i data-icon="arrow"></i></span></button>
           </div>
         </form>
       </div>

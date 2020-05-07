@@ -72,23 +72,25 @@
 
 @section('content')
   <div class="wrapper sh-main br-8">
-    <div class="row">
-      <div class="col-md-6">
-        <h4>{{ $project->name }}</h4>
-        <ul class="categories">
-          @foreach($project->categories as $category)
-            <li>{{ $category->name }}</li>
-          @endforeach
-        </ul>
-        <hr>
-        <ul>
-          <li><strong>Klient:</strong> {{ $project->client }}</li>
-          <li><strong>Ýyly:</strong> {{ $project->year }}</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <p>{{ $project->description }}</p>
-      </div>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+      <fieldset class="mt-3">
+        <legend>{{ $properties['native'] }}</legend>
+        <h4>{{ $project->getTranslation('name', $localeCode) }}</h4>
+        <p>{{ $project->getTranslation('description', $localeCode) }}</p>
+      </fieldset>
+    @endforeach
+
+    <div class="mt-3">
+      <ul class="categories">
+        @foreach($project->categories as $category)
+          <li>{{ $category->name }}</li>
+        @endforeach
+      </ul>
+
+      <ul>
+        <li><strong>Klient:</strong> {{ $project->client }}</li>
+        <li><strong>Ýyly:</strong> {{ $project->year }}</li>
+      </ul>
     </div>
 
     <div class="row galleries">

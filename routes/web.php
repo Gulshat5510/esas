@@ -24,17 +24,20 @@ Route::prefix('sample')->group(function () {
     });
 });
 
-Route::namespace('Web')->group(function () {
-    Route::get('/', 'WebController@index')->name('index');
+Route::namespace('Web')
+    ->prefix(LaravelLocalization::setLocale())
+    ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+    ->group(function () {
+        Route::get('/', 'WebController@index')->name('index');
 
-    Route::get('projects', 'ProjectController@index')->name('projects');
-    Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.show');
+        Route::get('projects', 'ProjectController@index')->name('projects');
+        Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.show');
 
-    Route::get('about', 'WebController@about')->name('about');
+        Route::get('about', 'WebController@about')->name('about');
 
-    Route::get('contact', 'ContactController@index')->name('contact.index');
-    Route::post('contact', 'ContactController@store')->name('contact.store');
-});
+        Route::get('contact', 'ContactController@index')->name('contact.index');
+        Route::post('contact', 'ContactController@store')->name('contact.store');
+    });
 
 
 // login
@@ -70,4 +73,7 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->middleware('auth')->
     Route::get('contacts', 'ContactController@index')->name('contact.index');
     Route::get('contacts/{contact}/show', 'ContactController@show')->name('contact.show');
     Route::delete('contacts/{contact}', 'ContactController@destroy')->name('contact.destroy');
+
+    // about
+    Route::resource('about', 'AboutController')->except('show');
 });

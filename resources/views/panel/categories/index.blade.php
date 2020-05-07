@@ -20,7 +20,8 @@
         <tr>
           <th style="width: 15px">#</th>
           <th>Slug</th>
-          <th>Ady</th>
+          <th>Русский</th>
+          <th>English</th>
           <th style="width: 120px"></th>
         </tr>
         </thead>
@@ -29,7 +30,8 @@
           <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $category->slug }}</td>
-            <td>{{ $category->name }}</td>
+            <td>{{ $category->getTranslation('name', 'ru') }}</td>
+            <td>{{ $category->getTranslation('name', 'en') }}</td>
             <td class="sm-btn">
               <form action="{{ route('panel.categories.destroy', $category->id) }}" method="post" id="destroy-{{ $category->id }}">
                 @method('delete')

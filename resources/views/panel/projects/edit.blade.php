@@ -23,17 +23,6 @@
     @csrf
     @method('patch')
     <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="name" class="w-100"><strong>Adyny ýazyň</strong></label>
-          <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $project->name }}" required>
-          @if ($errors->has('name'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name') }}</strong></span>
-          @else
-            <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
-          @endif
-        </div>
-      </div>
       <div class="col-md-3">
         <div class="form-group">
           <label for="client" class="w-100"><strong>Klient</strong></label>
@@ -56,17 +45,47 @@
           @endif
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="description" class="w-100"><strong>Beýany</strong></label>
-          <textarea name="description" id="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" required>{{ $project->description }}</textarea>
-          @if ($errors->has('description'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('description') }}</strong></span>
-          @else
-            <span class="invalid-feedback" role="alert"><strong>Hökman beýanyny ýazmaly</strong></span>
-          @endif
-        </div>
+    </div>
+    <fieldset class="mb-3">
+      <legend>Proýekt ady</legend>
+      <div class="row">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
+              <input type="text" name="name[{{ $localeCode }}]" id="name-{{ $localeCode }}" class="form-control {{ $errors->has('name.' . $localeCode) ? 'is-invalid' : '' }}"
+                     value="{{ $project->getTranslation('name', $localeCode) }}" required>
+              @if ($errors->has('name.' . $localeCode))
+                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name.' . $localeCode) }}</strong></span>
+              @else
+                <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
+              @endif
+            </div>
+          </div>
+        @endforeach
       </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <legend>Beýany</legend>
+      <div class="row">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="description-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
+              <textarea name="description[{{ $localeCode }}]" id="description-{{ $localeCode }}"
+                        class="form-control {{ $errors->has('description.' . $localeCode) ? 'is-invalid' : '' }}"
+                        required>{{ $project->getTranslation('description', $localeCode) }}</textarea>
+              @if ($errors->has('description.' . $localeCode))
+                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('description.' . $localeCode) }}</strong></span>
+              @else
+                <span class="invalid-feedback" role="alert"><strong>Hökman beýanyny ýazmaly</strong></span>
+              @endif
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </fieldset>
+    <div class="row">
       <div class="col-md-12">
         <div class="form-group">
           <label for="categories">Kategoriýasyny saýlaň</label>

@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'slug' => 'required|unique:categories',
-            'name' => 'required'
+            'name.*' => 'required'
         ]);
 
         Category::create($request->all());
@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category)
     {
-        $request->validate(['name' => 'required']);
+        $request->validate(['name.*' => 'required']);
 
         $category->update($request->all());
 

@@ -89,6 +89,8 @@ a {
     color: #000;
     border: none;
     border-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
 
     &:focus {
       color: rgba(0, 0, 0, 0.6);
@@ -264,6 +266,25 @@ main {
   .img-wrapper {
     height: 590px;
     overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  h4 {
+    font-family: $bold;
+    margin-bottom: 10px;
+
+    &.heading {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .services ul {
+    margin-bottom: 24px;
+
+    li + li {
+      margin-top: 7px;
+    }
   }
 }
 
@@ -447,9 +468,30 @@ footer {
     display: inline-block;
   }
 
-  .copyright,
-  .contact-lists {
+  .copyright {
     margin-bottom: 18px;
+  }
+
+  .btn-white {
+    &:hover {
+      color: #969696
+    }
+
+    &:focus {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      color: #969696
+    }
+  }
+
+  .dropup .dropdown-toggle::after {
+    content: none;
+  }
+
+  .dropdown-menu {
+    min-width: 76px;
+    border-radius: 0;
   }
 }
 

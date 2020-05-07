@@ -29,8 +29,8 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name.*' => 'required',
+            'description.*' => 'required',
             'client' => 'required',
             'year' => 'required',
             'categories.*' => 'required|exists:categories,id',
@@ -78,8 +78,8 @@ class ProjectController extends Controller
     public function update(Project $project, Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'description' => 'required',
+            'name.*' => 'required',
+            'description.*' => 'required',
             'client' => 'required',
             'year' => 'required',
             'categories.*' => 'required|exists:categories,id',

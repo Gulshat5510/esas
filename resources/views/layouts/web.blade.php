@@ -13,7 +13,7 @@
 <body>
 @yield('flash-message')
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="{{ route('index') }}">Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,24 +28,29 @@
     </div>
   </div>
 </nav>
-<main class="container-fluid">
+<main class="container">
   @yield('content')
 </main>
 <footer>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <ul class="contact-lists">
-          <li><a href="mailto:contact@gurban.com">contact@gurban.com</a></li>
-          <li><a href="tel:+99361256547">+993 61 256547</a></li>
-        </ul>
         <div class="copyright">esas&copy; {{ date('Y') }} — Брендинговое агентство</div>
       </div>
       <div class="col-md-6">
         <ul class="social-lists til-sm-text-right">
           <li><a href="#">Instagram</a></li>
           <li><a href="#">Behance</a></li>
-          <li><a href="#">Dribbble</a></li>
+          <li>
+            <div class="btn-group dropup">
+              <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">РУ</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                  <a class="dropdown-item" href="#">{{ $properties['native'] }}</a>
+                @endforeach
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </div>

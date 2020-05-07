@@ -22,20 +22,9 @@
   <form action="{{ route('panel.projects.store') }}" method="post" class="needs-validation form-wrapper sh-main br-8" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="name" class="w-100"><strong>Adyny ýazyň</strong></label>
-          <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" required>
-          @if ($errors->has('name'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name') }}</strong></span>
-          @else
-            <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
-          @endif
-        </div>
-      </div>
       <div class="col-md-3">
         <div class="form-group">
-          <label for="client" class="w-100"><strong>Klient</strong></label>
+          <label for="client" class="w-100"><strong>Klient <span class="text-danger">*</span></strong></label>
           <input type="text" name="client" id="client" class="form-control {{ $errors->has('client') ? 'is-invalid' : '' }}" value="{{ old('client') }}" required>
           @if ($errors->has('client'))
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('client') }}</strong></span>
@@ -46,7 +35,7 @@
       </div>
       <div class="col-md-3">
         <div class="form-group">
-          <label for="year" class="w-100"><strong>Ýyly</strong></label>
+          <label for="year" class="w-100"><strong>Ýyly <span class="text-danger">*</span></strong></label>
           <input type="text" name="year" id="year" class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" value="{{ old('year') }}" required>
           @if ($errors->has('year'))
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('year') }}</strong></span>
@@ -55,20 +44,47 @@
           @endif
         </div>
       </div>
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="description" class="w-100"><strong>Beýany</strong></label>
-          <textarea name="description" id="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" required>{{ old('description') }}</textarea>
-          @if ($errors->has('description'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('description') }}</strong></span>
-          @else
-            <span class="invalid-feedback" role="alert"><strong>Hökman beýanyny ýazmaly</strong></span>
-          @endif
-        </div>
+    </div>
+    <fieldset class="mb-3">
+      <legend>Proýekt ady</legend>
+      <div class="row">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
+              <input type="text" name="name[{{ $localeCode }}]" id="name-{{ $localeCode }}" class="form-control {{ $errors->has('name.' . $localeCode) ? 'is-invalid' : '' }}" value="{{ old('name.' . $localeCode) }}" required>
+              @if ($errors->has('name.' . $localeCode))
+                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name.' . $localeCode) }}</strong></span>
+              @else
+                <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
+              @endif
+            </div>
+          </div>
+        @endforeach
       </div>
+    </fieldset>
+    <fieldset class="mb-3">
+      <legend>Beýany</legend>
+      <div class="row">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="description-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
+              <textarea name="description[{{ $localeCode }}]" id="description-{{ $localeCode }}" class="form-control {{ $errors->has('description.' . $localeCode) ? 'is-invalid' : '' }}" required>{{ old('description.' . $localeCode) }}</textarea>
+              @if ($errors->has('description.' . $localeCode))
+                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('description.' . $localeCode) }}</strong></span>
+              @else
+                <span class="invalid-feedback" role="alert"><strong>Hökman beýanyny ýazmaly</strong></span>
+              @endif
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </fieldset>
+    <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-          <label for="categories">Kategoriýasyny saýlaň</label>
+          <label for="categories">Kategoriýasyny saýlaň <span class="text-danger">*</span></label>
           <select name="categories[]" id="categories" class="form-control {{ $errors->has('categories.*') ? ' is-invalid' : '' }}" multiple>
             @foreach($categories as $category)
               <option value="{{ $category->id }}">{{ $category->name }}</option>

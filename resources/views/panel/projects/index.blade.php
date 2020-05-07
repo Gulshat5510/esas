@@ -33,7 +33,6 @@
             <td class="vam">{{ $loop->iteration }}</td>
             <td><img src="{{ $project->getFirstImage() }}" alt="project-{{ $project->id }}" style="height: 70px;"></td>
             <td class="vam">{{ $project->name }}</td>
-            {{--todo short --}}
             <td class="vam">{{ $project->summary300() }}</td>
             <td class="vam">{{ $project->client }}</td>
             <td class="vam">{{ $project->year }}</td>

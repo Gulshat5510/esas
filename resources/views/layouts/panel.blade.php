@@ -17,6 +17,7 @@
   <div class="inner">
     <ul class="menu">
       <li><a href="{{ route('panel.index') }}" class="menu-link {{ request()->is('panel') ? 'active' : '' }}"><i data-icon="home"></i>Baş sahypa</a></li>
+      <li><a href="{{ route('panel.about.index') }}" class="menu-link {{ request()->is('*about*') ? 'active' : '' }}"><i data-icon="file-text"></i>About us</a></li>
       <li><a href="{{ route('panel.categories.index') }}" class="menu-link {{ request()->is('panel/categories*') ? 'active' : ''}}"><i data-icon="layers"></i>Kategoriýalar</a></li>
       <li><a href="{{ route('panel.projects.index') }}" class="menu-link {{ request()->is('panel/projects*') ? 'active' : '' }}"><i data-icon="briefcase"></i>Proýektler</a></li>
       <li><a href="{{ route('panel.contact.index') }}" class="menu-link {{ request()->is('panel/contact*') ? 'active' : '' }}"><i data-icon="inbox"></i>Gelen hatlar</a></li>
@@ -26,9 +27,9 @@
 
 <div class="main">
   <nav class="navbar navbar-expand-sm navbar-dark bg-success">
-    <form class="form-inline">
-      <span><i data-icon="search"></i></span><input class="form-control" type="search" placeholder="Search" aria-label="Search">
-    </form>
+    {{--    <form class="form-inline">--}}
+    {{--      <span><i data-icon="search"></i></span><input class="form-control" type="search" placeholder="Search" aria-label="Search">--}}
+    {{--    </form>--}}
     <ul class="navbar-nav ml-auto">
       {{--      <li class="nav-item dropdown">--}}
       {{--        <a class="nav-link dropdown-toggle" href="#" id="navBell" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
@@ -113,12 +114,7 @@
         $('i[data-icon="code"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>');
         $('i[data-icon="user"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>');
         $('i[data-icon="inbox"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg>');
-        // $('i[data-icon="airplay"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg>');
-        // $('i[data-icon="video"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>');
-        // $('i[data-icon="map"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>');
-        // $('i[data-icon="pin"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>');
-        // $('i[data-icon="codepen"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg>');
-        // $('i[data-icon="file-text"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
+        $('i[data-icon="file-text"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>');
 
       @if($errors->any() || session('success') || session('error') || session('warning') || session('danger'))
       setTimeout(function () {

@@ -5,9 +5,9 @@
 @section('content')
   <section id="projects">
     <div class="controls">
-      <button type="button" class="control" data-filter="all">Все</button>
+      <button type="button" class="control" data-mixitup-control data-filter="all">Все</button>
       @foreach($categories as $category)
-        <button type="button" class="control" data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
+        <button type="button" class="control" data-mixitup-control data-filter=".{{ $category->slug }}">{{ $category->name }}</button>
       @endforeach
     </div>
 
@@ -38,6 +38,10 @@
   <script src="{{ asset('js/mixitup.min.js') }}"></script>
   <script>
       let containerEl = $('.projects');
-      let mixer = mixitup(containerEl);
+      let mixer = mixitup(containerEl, {
+          selectors: {
+              control: '[data-mixitup-control]'
+          }
+      });
   </script>
 @endsection

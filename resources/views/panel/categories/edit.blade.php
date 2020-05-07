@@ -19,19 +19,26 @@
           <span class="d-block disabled">{{ $category->slug }}</span>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="name" class="w-100"><strong>Adyny ýazyň</strong></label>
-          <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $category->name }}" required>
-          @if ($errors->has('name'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name') }}</strong></span>
-          @else
-            <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
-          @endif
-        </div>
-      </div>
     </div>
-
+    <fieldset class="mb-3">
+      <legend>Kategoriýa ady</legend>
+      <div class="row">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="name-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
+              <input type="text" name="name[{{ $localeCode }}]" id="name-{{ $localeCode }}" class="form-control {{ $errors->has('name.' . $localeCode) ? 'is-invalid' : '' }}"
+                     value="{{ $category->getTranslation('name', $localeCode) }}" required>
+              @if ($errors->has('name.' . $localeCode))
+                <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name.' . $localeCode) }}</strong></span>
+              @else
+                <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
+              @endif
+            </div>
+          </div>
+        @endforeach
+      </div>
+    </fieldset>
     <button class="btn btn-success btn-submit mt-3">Ýatda sakla</button>
   </form>
 @endsection

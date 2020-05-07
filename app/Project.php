@@ -2,12 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Project extends Model
 {
+    use HasTranslations;
+
     protected $fillable = ['name', 'description', 'client', 'year'];
+    public $translatable = ['name', 'description'];
 
     public function categories()
     {
