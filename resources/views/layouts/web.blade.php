@@ -43,10 +43,12 @@
           <li><a href="#">Behance</a></li>
           <li>
             <div class="btn-group dropup">
-              <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">РУ</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="btn btn-white dropdown-toggle text-uppercase" href="#" role="button" id="dropdownLocale" data-toggle="dropdown" aria-haspopup="true"
+                 aria-expanded="false">{{ LaravelLocalization::getCurrentLocaleScript() }}</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownLocale">
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                  <a class="dropdown-item" href="#">{{ $properties['native'] }}</a>
+                  <a class="dropdown-item text-uppercase {{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }}" hreflang="{{$localeCode}}"
+                     href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
                 @endforeach
               </div>
             </div>
