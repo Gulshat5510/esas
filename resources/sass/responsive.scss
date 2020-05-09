@@ -87,8 +87,6 @@
 @include media-breakpoint-up(lg) { // 992px
   .container {
     max-width: 992px;
-    padding-left: 60px;
-    padding-right: 60px;
   }
 
   .navbar .nav-item {

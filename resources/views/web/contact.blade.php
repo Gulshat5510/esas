@@ -20,7 +20,7 @@
         <p class="contact-desc">@lang('main.address')</p>
         <ul class="lists">
           <li><a href="mailto:contact@gurban.com">contact@gurban.com</a></li>
-          <li><a href="tel:+99361256547">+(993) 61 256547</a></li>
+          <li><a href="tel:+99361256547">+993 61 25 65 47</a></li>
         </ul>
       </div>
 

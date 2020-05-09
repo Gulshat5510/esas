@@ -507,10 +507,11 @@ footer {
 /* MIX-IT-UP
 ---------------------------------------------------------------------- */
 .controls {
-  padding-right: 2px;
-  padding-left: 2px;
-  margin-bottom: 22px;
+  padding: 4px 2px 6px;
+  margin-bottom: 18px;
   font-size: 16px;
+  white-space: nowrap;
+  overflow-y: auto;
 
   button {
     margin: 0;

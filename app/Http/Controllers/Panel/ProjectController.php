@@ -33,7 +33,7 @@ class ProjectController extends Controller
             'description.*' => 'required',
             'client' => 'required',
             'year' => 'required',
-            'categories.*' => 'required|exists:categories,id',
+            'categories' => 'required|array|min:1',
             'images.*' => 'required|image|max:1000',
             'types.*' => 'required|in:wide,normal',
         ]);
