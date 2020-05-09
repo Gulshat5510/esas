@@ -82,7 +82,7 @@ class ProjectController extends Controller
             'description.*' => 'required',
             'client' => 'required',
             'year' => 'required',
-            'categories.*' => 'required|exists:categories,id',
+            'categories' => 'required|array|min:1',
         ]);
 
         $project->update($data);

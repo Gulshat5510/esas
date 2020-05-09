@@ -89,13 +89,13 @@
       <div class="col-md-12">
         <div class="form-group">
           <label for="categories">Kategoriýasyny saýlaň</label>
-          <select name="categories[]" id="categories" class="form-control {{ $errors->has('categories.*') ? ' is-invalid' : '' }}" multiple>
+          <select name="categories[]" id="categories" class="form-control {{ $errors->has('categories') ? ' is-invalid' : '' }}" multiple>
             @foreach($categories as $category)
               <option value="{{ $category->id }}" @if(in_array($category->id, $arr)) selected @endif>{{ $category->name }}</option>
             @endforeach
           </select>
-          @if ($errors->has('categories.*'))
-            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('categories.' . $localeCode) }}</strong></span>
+          @if ($errors->has('categories'))
+            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('categories') }}</strong></span>
           @else
             <span class="invalid-feedback" role="alert"><strong>Hökman tekst ýazmaly</strong></span>
           @endif
