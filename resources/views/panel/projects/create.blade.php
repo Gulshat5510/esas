@@ -44,6 +44,17 @@
           @endif
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="file" class="w-100"><strong>Cover surat saýlaň <span class="text-danger ml-1">*</span></strong></label>
+          <input type="file" name="file" id="image" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}" required>
+          @if ($errors->has('file'))
+            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('file') }}</strong></span>
+          @else
+            <span class="invalid-feedback" role="alert"><strong>Hökman surat saýlamaly</strong></span>
+          @endif
+        </div>
+      </div>
     </div>
     <fieldset class="mb-3">
       <legend>Proýekt ady</legend>

@@ -31,7 +31,7 @@
         @foreach($projects as $project)
           <tr>
             <td class="vam">{{ $loop->iteration }}</td>
-            <td><img src="{{ $project->getFirstImage() }}" alt="project-{{ $project->id }}" style="height: 70px;"></td>
+            <td><img src="{{ $project->getCoverImage() }}" alt="project-{{ $project->id }}" style="height: 70px;"></td>
             <td class="vam">{{ $project->name }}</td>
             <td class="vam">{{ $project->summary300() }}</td>
             <td class="vam">{{ $project->client }}</td>

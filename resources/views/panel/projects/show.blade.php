@@ -72,6 +72,14 @@
 
 @section('content')
   <div class="wrapper sh-main br-8">
+    <div class="row galleries">
+      <div class="col-md-6">
+        <div class="img-wrapper-normal p-rel">
+          <img src="{{ $project->getCoverImage() }}" alt="project-cover-{{ $project->id }}" class="object-cover-center">
+        </div>
+      </div>
+    </div>
+
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
       <fieldset class="mt-3">
         <legend>{{ $properties['native'] }}</legend>

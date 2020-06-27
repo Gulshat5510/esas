@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasTranslations;
 
-    protected $fillable = ['name', 'description', 'client', 'year'];
+    protected $fillable = ['name', 'description', 'cover', 'client', 'year'];
     public $translatable = ['name', 'description'];
 
     public function categories()
@@ -28,9 +28,9 @@ class Project extends Model
         return $this->images()->orderBy('order')->get();
     }
 
-    public function getFirstImage()
+    public function getCoverImage()
     {
-        return asset('uploads/projects/' . $this->images()->first()->filename);
+        return asset('uploads/projects/' . $this->cover);
     }
 
     public function getFirstCategoryName()

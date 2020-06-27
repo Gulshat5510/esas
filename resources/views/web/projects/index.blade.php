@@ -17,7 +17,7 @@
           <div class="project-item">
             <a href="{{ route('projects.show', $project->id) }}">
               <figure>
-                <img src="{{ $project->getFirstImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
+                <img src="{{ $project->getCoverImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
                 <figcaption>
                   <div class="title">{{ $project->name }}</div>
                   <div class="desc">{{ $project->getFirstCategoryName() }}</div>

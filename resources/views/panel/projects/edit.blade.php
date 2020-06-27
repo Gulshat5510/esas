@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-  <form action="{{ route('panel.projects.update', $project->id) }}" method="post" class="needs-validation form-wrapper sh-main br-8" novalidate>
+  <form action="{{ route('panel.projects.update', $project->id) }}" method="post" class="needs-validation form-wrapper sh-main br-8" enctype="multipart/form-data" novalidate>
     @csrf
     @method('patch')
     <div class="row">
@@ -42,6 +42,15 @@
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('year') }}</strong></span>
           @else
             <span class="invalid-feedback" role="alert"><strong>Hökman ýylyny ýazmaly</strong></span>
+          @endif
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="file" class="w-100"><strong>Cover surat saýlaň <span class="text-danger ml-1">*</span></strong></label>
+          <input type="file" name="file" id="image" class="form-control {{ $errors->has('file') ? 'is-invalid' : '' }}">
+          @if ($errors->has('file'))
+            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('file') }}</strong></span>
           @endif
         </div>
       </div>

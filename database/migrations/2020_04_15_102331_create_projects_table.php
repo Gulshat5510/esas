@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->json('name');
             $table->json('description');
+            $table->string('cover');
             $table->string('client');
             $table->string('year');
             $table->timestamps();

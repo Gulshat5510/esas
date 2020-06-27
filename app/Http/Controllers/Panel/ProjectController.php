@@ -31,12 +31,15 @@ class ProjectController extends Controller
         $data = $request->validate([
             'name.*' => 'required',
             'description.*' => 'required',
+            'file' => 'required|image|max:1000',
             'client' => 'required',
             'year' => 'required',
             'categories' => 'required|array|min:1',
             'images.*' => 'required|image|max:1000',
             'types.*' => 'required|in:wide,normal',
         ]);
+
+        $data['cover'] = $this->fetchImage($data['file']);
 
         $project = Project::create($data);
 
@@ -80,10 +83,16 @@ class ProjectController extends Controller
         $data = $request->validate([
             'name.*' => 'required',
             'description.*' => 'required',
+            'file' => 'image|max:1000',
             'client' => 'required',
             'year' => 'required',
             'categories' => 'required|array|min:1',
         ]);
+
+        if ($request->has('file')) {
+            $this->removeImagePath($project->cover);
+            $data['cover'] = $this->fetchImage($data['file']);
+        }
 
         $project->update($data);
         $project->categories()->sync($data['categories']);

@@ -143,13 +143,17 @@
   }
 }
 
-@media (min-width: 1460px) {
+@media (min-width: 1400px) {
   .container {
-    max-width: 1400px;
+    max-width: 2000px;
+    padding-left: 75px;
+    padding-right: 75px;
   }
+}
 
+@media (min-width: 1460px) {
   .project-item figure {
-    height: 460px;
+    height: 5750px;
   }
 
   #about .img-wrapper {
