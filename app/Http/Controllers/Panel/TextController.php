@@ -28,6 +28,22 @@ class TextController extends Controller
 
     public function edit(Text $text)
     {
-        return view('panel.texts.edit', $text);
+        return view('panel.texts.edit', compact('text'));
+    }
+
+    public function update(Request $request, Text $text)
+    {
+        $request->validate(['description.*' => 'required']);
+
+        $text->update($request->all());
+
+        return redirect()->route('panel.index')->with('success', 'Baş sahypa teksti üýtgedildi');
+    }
+
+    public function destroy(Text $text)
+    {
+        $text->delete();
+
+        return redirect()->route('panel.index')->with('danger', 'Baş sahypa teksti pozuldy');
     }
 }
