@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Panel;
 
+use App\Category;
+use App\Project;
+use App\Text;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,7 +14,22 @@ class PanelController extends Controller
 {
     public function index()
     {
-        return view('panel.index');
+        $arr = [
+            [
+                'link' => route('panel.categories.index'),
+                'count' => Category::count(),
+                'name' => 'Kategoriýalar',
+            ],
+            [
+                'link' => route('panel.projects.index'),
+                'count' => Project::count(),
+                'name' => 'Proýektler',
+            ],
+        ];
+
+        $text = Text::first();
+
+        return view('panel.index', compact('arr', 'text'));
     }
 
     public function profileEdit()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\About;
 use App\Http\Controllers\Controller;
 use App\Project;
+use App\Text;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -12,12 +13,13 @@ class WebController extends Controller
     public function index()
     {
         $projects = Project::all();
+        $text = Text::first();
 
         if (count($projects) > 8) {
             $projects = $projects->take(8);
         }
 
-        return view('web.index', compact('projects'));
+        return view('web.index', compact('projects', 'text'));
     }
 
     public function about()

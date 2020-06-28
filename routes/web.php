@@ -2,28 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('sample')->group(function () {
-    Route::get('home', function () {
-        return view('sample.home');
-    });
-
-    Route::get('projects', function () {
-        return view('sample.projects');
-    });
-
-    Route::get('projects/show', function () {
-        return view('sample.project-show');
-    });
-
-    Route::get('about', function () {
-        return view('sample.about');
-    });
-
-    Route::get('contact', function () {
-        return view('sample.contact');
-    });
-});
-
 Route::namespace('Web')
     ->prefix(LaravelLocalization::setLocale())
     ->middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
@@ -76,4 +54,11 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->middleware('auth')->
 
     // about
     Route::resource('about', 'AboutController')->except('show');
+
+    // home page text
+    Route::get('texts/create', 'TextController@create')->name('texts.create');
+    Route::post('texts', 'TextController@store')->name('texts.store');
+    Route::get('texts/{text}/edit', 'TextController@edit')->name('texts.edit');
+    Route::patch('texts/{text}', 'TextController@update')->name('texts.update');
+    Route::delete('texts/{text}', 'TextController@destroy')->name('texts.destroy');
 });

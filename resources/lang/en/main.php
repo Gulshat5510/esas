@@ -4,7 +4,7 @@ return [
     'brand'   => 'Esas &nbsp; · &nbsp; Branding agency',
     'branding_agency' => 'Branding agency',
 
-    'home_paragraph' => 'We create brands, identity and graphic design.',
+    'home_paragraph' => '',
 
     'projects' => 'Projects',
     'about_us' => 'About us',

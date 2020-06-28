@@ -2,7 +2,9 @@
 
 @section('content')
   <section id="home">
-    <h4 class="home">@lang('main.home_paragraph')</h4>
+    @if($text)
+      <h4 class="home">{{ $text->description }}</h4>
+    @endif
 
     <div class="row">
       @foreach($projects as $project)
