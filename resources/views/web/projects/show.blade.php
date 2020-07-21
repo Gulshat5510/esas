@@ -31,7 +31,7 @@
       </div>
 
       <ul class="owner">
-        <li class="mb-3"><span class="d-block mb-2">@lang('main.client'):</span> {!! $project->client !!}</li>
+        <li class="mb-3">{!! $project->client !!}</li>
         <li>{{ $project->year }} @lang('main.year')</li>
       </ul>
     </div>
