@@ -48,4 +48,15 @@ class Project extends Model
 
         return $description;
     }
+
+    public function clientSummary300()
+    {
+        $client = $this->client;
+        $client = strip_tags($client);
+        $client = html_entity_decode($client);
+        $client = trim($client, "\t\n\r\0\x0B\xC2\xA0");
+        $client = Str::limit($client, 300);
+
+        return $client;
+    }
 }

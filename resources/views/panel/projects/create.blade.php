@@ -22,10 +22,10 @@
   <form action="{{ route('panel.projects.store') }}" method="post" class="needs-validation form-wrapper sh-main br-8" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-12">
         <div class="form-group">
           <label for="client" class="w-100"><strong>Klient <span class="text-danger">*</span></strong></label>
-          <input type="text" name="client" id="client" class="form-control {{ $errors->has('client') ? 'is-invalid' : '' }}" value="{{ old('client') }}" required>
+          <textarea name="client" id="client" class="form-control editor {{ $errors->has('client') ? 'is-invalid' : '' }}" required>{{ old('client') }}</textarea>
           @if ($errors->has('client'))
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('client') }}</strong></span>
           @else

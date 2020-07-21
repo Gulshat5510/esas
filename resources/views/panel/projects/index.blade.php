@@ -34,7 +34,7 @@
             <td><img src="{{ $project->getCoverImage() }}" alt="project-{{ $project->id }}" style="height: 70px;"></td>
             <td class="vam">{{ $project->name }}</td>
             <td class="vam">{{ $project->summary300() }}</td>
-            <td class="vam">{{ $project->client }}</td>
+            <td class="vam">{{ $project->clientSummary300() }}</td>
             <td class="vam">{{ $project->year }}</td>
             <td class="vam sm-btn">
               <form action="{{ route('panel.projects.destroy', $project->id) }}" method="post" id="destroy-{{ $project->id }}">

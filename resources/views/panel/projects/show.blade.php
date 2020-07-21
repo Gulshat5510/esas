@@ -96,7 +96,7 @@
       </ul>
 
       <ul>
-        <li><strong>Klient:</strong> {{ $project->client }}</li>
+        <li><strong>Klient:</strong> {!! $project->client !!}</li>
         <li><strong>Ýyly:</strong> {{ $project->year }}</li>
       </ul>
     </div>
