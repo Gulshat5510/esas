@@ -84,7 +84,7 @@
         <fieldset class="mt-3">
           <legend>{{ $properties['native'] }}</legend>
           <h4>{{ $project->getTranslation('name', $localeCode) }}</h4>
-          <p>{{ $project->getTranslation('description', $localeCode) }}</p>
+          <p>{!! $project->getTranslation('description', $localeCode) !!}</p>
         </fieldset>
       @endforeach
 

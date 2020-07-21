@@ -63,7 +63,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="name-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
-              <input type="text" name="name[{{ $localeCode }}]" id="name-{{ $localeCode }}" class="form-control {{ $errors->has('name.' . $localeCode) ? 'is-invalid' : '' }}" value="{{ old('name.' . $localeCode) }}" required>
+              <input type="text" name="name[{{ $localeCode }}]" id="name-{{ $localeCode }}" class="form-control {{ $errors->has('name.' . $localeCode) ? 'is-invalid' : '' }}"
+                     value="{{ old('name.' . $localeCode) }}" required>
               @if ($errors->has('name.' . $localeCode))
                 <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('name.' . $localeCode) }}</strong></span>
               @else
@@ -81,7 +82,8 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="description-{{ $localeCode }}" class="w-100"><strong>{{ $properties['native'] }} <span class="text-danger">*</span></strong></label>
-              <textarea name="description[{{ $localeCode }}]" id="description-{{ $localeCode }}" class="form-control {{ $errors->has('description.' . $localeCode) ? 'is-invalid' : '' }}" required>{{ old('description.' . $localeCode) }}</textarea>
+              <textarea name="description[{{ $localeCode }}]" id="description-{{ $localeCode }}"
+                        class="form-control editor {{ $errors->has('description.' . $localeCode) ? 'is-invalid' : '' }}" required>{{ old('description.' . $localeCode) }}</textarea>
               @if ($errors->has('description.' . $localeCode))
                 <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('description.' . $localeCode) }}</strong></span>
               @else
@@ -145,8 +147,10 @@
 
 @section('js')
   <script src="{{ asset('js/select2.min.js') }}"></script>
+  <script src="{{ asset('js/ckeditor5/ckeditor.js') }}"></script>
+  <script src="{{ asset('js/ckeditor5/translations/ru.js') }}"></script>
   <script>
-      $(document).ready(function () {
+      $(function () {
           $('#categories').select2();
           $('b[role="presentation"]').hide();
 
@@ -161,6 +165,13 @@
           $('.clone').click(function () {
               $('.copy').parent().append(cloneDiv.clone(true));
           });
+
+          let allEditors = document.querySelectorAll('.editor');
+          for (let i = 0; i < allEditors.length; ++i) {
+              ClassicEditor.create(allEditors[i], {
+                  language: 'ru'
+              });
+          }
 
           (function () {
               'use strict';

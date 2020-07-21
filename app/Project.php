@@ -40,7 +40,10 @@ class Project extends Model
 
     public function summary300()
     {
-        $description = trim($this->description, "\t\n\r\0\x0B\xC2\xA0");
+        $description = $this->description;
+        $description = strip_tags($description);
+        $description = html_entity_decode($description);
+        $description = trim($description, "\t\n\r\0\x0B\xC2\xA0");
         $description = Str::limit($description, 300);
 
         return $description;

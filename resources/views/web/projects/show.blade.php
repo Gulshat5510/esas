@@ -15,7 +15,7 @@
         </ul>
       </div>
       <div class="col-lg-6 from-col">
-        <p>{{ $project->description }}</p>
+        <p>{!! $project->description !!}</p>
       </div>
     </div>
 
