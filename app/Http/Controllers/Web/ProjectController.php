@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest()->get();
         $categories = Category::all();
 
         return view('web.projects.index', compact('projects', 'categories'));

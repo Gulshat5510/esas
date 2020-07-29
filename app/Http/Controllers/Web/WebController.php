@@ -12,7 +12,7 @@ class WebController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest()->get();
         $text = Text::first();
 
         if (count($projects) > 8) {
