@@ -12,22 +12,20 @@
 </head>
 <body>
 @yield('flash-message')
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-light flex-flow bg-light">
   <div class="container">
-    <a class="navbar-brand" href="{{ route('index') }}">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">@lang('main.projects')</a></li>
-        <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">@lang('main.about_us')</a></li>
-        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">@lang('main.contact_us')</a></li>
-      </ul>
-    </div>
+    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo"></a>
+    <ul class="navbar-nav ml-auto d-none d-sm-flex">
+      <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">@lang('main.projects')</a></li>
+      <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">@lang('main.about_us')</a></li>
+      {{--        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">@lang('main.contact_us')</a></li>--}}
+    </ul>
+    <ul class="navbar-nav ml-auto d-flex d-sm-none">
+      <li class="nav-item"><span class="nav-link" onclick="openNav()"><i data-icon="menu"></i></span></li>
+    </ul>
   </div>
 </nav>
+
 <main class="container">
   @yield('content')
 </main>
@@ -35,34 +33,69 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="copyright">esas&copy; {{ date('Y') }} — @lang('main.branding_agency')</div>
+        <div class="copyright"><span>&copy; Esas</span> <span class="dash">—</span> <span>@lang('main.branding_agency')</span></div>
       </div>
       <div class="col-md-6">
         <ul class="social-lists til-sm-text-right">
           <li><a href="#">Instagram</a></li>
           <li><a href="#">Behance</a></li>
-          <li>
-            <div class="btn-group dropup">
-              <a class="btn btn-white dropdown-toggle text-uppercase" href="#" role="button" id="dropdownLocale" data-toggle="dropdown" aria-haspopup="true"
-                 aria-expanded="false">{{ LaravelLocalization::getCurrentLocaleScript() }}</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownLocale">
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                  <a class="dropdown-item text-uppercase {{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }}" hreflang="{{$localeCode}}"
-                     href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
-                @endforeach
-              </div>
-            </div>
-          </li>
+          @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <li class="{{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }} lang">
+              <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
+            </li>
+          @endforeach
         </ul>
       </div>
     </div>
   </div>
 </footer>
+
+<div class="aside d-block d-sm-none" id="menu">
+  <div class="inner">
+    <div class="side-nav">
+      <div class="float-left">
+        <a href="{{ route('index') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo"></a>
+      </div>
+      <div class="float-right">
+        <span onclick="closeNav()"><i data-icon="x"></i></span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="side-menu">
+      <ul>
+        <li class="{{ request()->is('*projects*') ? 'active':'' }}"><a href="{{ route('projects') }}">@lang('main.projects')</a></li>
+        <li class="{{ request()->is('*about*') ? 'active':'' }}"><a href="{{ route('about') }}">@lang('main.about_us')</a></li>
+      </ul>
+    </div>
+    <div class="side-footer">
+      <ul>
+        <li><a href="tel:+99361256547">+993 61 25 65 47</a></li>
+        <li><a href="mailto:gurbanmw@gmail.com">gurbanmw@gmail.com</a></li>
+      </ul>
+      <div class="locale">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <a class="{{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }}" hreflang="{{ $localeCode }}"
+             href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 <script>
-    $(function () {
+    function openNav() {
+        document.getElementById("menu").style.width = "100%";
+    }
 
+    function closeNav() {
+        document.getElementById("menu").style.width = "0";
+    }
+
+    $(function () {
+        $('i[data-icon="menu"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
+        $('i[data-icon="x"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
     });
 </script>
 @yield('js')

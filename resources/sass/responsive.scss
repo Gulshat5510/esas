@@ -5,25 +5,19 @@
   }
 
   .home {
-    width: 452px;
+    width: 542px;
   }
 
   #contact .contact-desc.light {
     width: 352px;
   }
 
-  #about .desc {
-    width: 530px;
-  }
-
   #show .more {
     margin-left: 135px;
   }
 
-  footer {
-    .social-lists li + li {
-      margin-left: 36px;
-    }
+  footer .social-lists li + li {
+    margin-left: 15px;
   }
 }
 
@@ -41,19 +35,6 @@
   .navbar {
     padding-top: 26px;
     padding-bottom: 26px;
-
-    .nav-item {
-      margin-left: 15px;
-      margin-right: 15px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
   }
 
   #about .desc {
@@ -76,7 +57,6 @@
 
   footer {
     padding-top: 60px;
-    padding-bottom: 60px;
 
     .copyright {
       margin-bottom: 0;
@@ -121,7 +101,7 @@
     }
 
     .dark {
-      padding-top: 70px;
+      padding-top: 90px;
     }
   }
 
@@ -131,11 +111,6 @@
 
   footer {
     padding-top: 86px;
-    padding-bottom: 86px;
-
-    .social-lists li + li {
-      margin-left: 56px;
-    }
   }
 
   .controls button + button {
@@ -146,6 +121,10 @@
 @include media-breakpoint-up(xl) { // 1200px
   .container {
     max-width: 1200px;
+  }
+
+  #show .dark {
+    padding-top: 120px;
   }
 }
 
@@ -160,10 +139,6 @@
 @media (min-width: 1460px) {
   .project-item figure {
     height: 575px;
-  }
-
-  #about .img-wrapper {
-    height: 680px;
   }
 
   #show .galleries {
@@ -287,6 +262,20 @@
 
   #about .img-wrapper {
     height: 320px;
+  }
+
+  .copyright {
+    .dash {
+      display: none;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  footer .lang {
+    display: none;
   }
 }
 

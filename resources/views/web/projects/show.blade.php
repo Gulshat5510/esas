@@ -30,10 +30,10 @@
         @endforeach
       </div>
 
-      <ul class="owner">
-        <li class="mb-3">{!! $project->client !!}</li>
-        <li>{{ $project->year }} @lang('main.year')</li>
-      </ul>
+{{--      <ul class="owner">--}}
+{{--        <li class="mb-3">{!! $project->client !!}</li>--}}
+{{--        <li>{{ $project->year }} @lang('main.year')</li>--}}
+{{--      </ul>--}}
     </div>
 
     <h6 class="dark">@lang('main.other_works')</h6>
@@ -46,8 +46,10 @@
               <figure>
                 <img src="{{ $project->getCoverImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
                 <figcaption>
-                  <div class="title">{{ $project->name }}</div>
-                  <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+                  <div class="inner">
+                    <div class="title">{{ $project->name }}</div>
+                    <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+                  </div>
                 </figcaption>
               </figure>
             </a>

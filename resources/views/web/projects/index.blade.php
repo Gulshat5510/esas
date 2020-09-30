@@ -19,8 +19,10 @@
               <figure>
                 <img src="{{ $project->getCoverImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
                 <figcaption>
-                  <div class="title">{{ $project->name }}</div>
-                  <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+                  <div class="inner">
+                    <div class="title">{{ $project->name }}</div>
+                    <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+                  </div>
                 </figcaption>
               </figure>
             </a>

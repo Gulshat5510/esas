@@ -17,7 +17,6 @@ Route::namespace('Web')
         Route::post('contact', 'ContactController@store')->name('contact.store');
     });
 
-
 // login
 Route::prefix('panel')->group(function () {
     Route::get('login', 'Auth\LoginController@showLoginForm');
