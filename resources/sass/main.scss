@@ -161,6 +161,16 @@ main {
   margin-bottom: 30px;
   width: 100%;
 
+  .title {
+    font-family: $medium;
+    font-size: 27px;
+    margin-bottom: 4px;
+  }
+
+  .desc {
+    font-size: 18px;
+  }
+
   figure {
     height: 359px;
     position: relative;
@@ -198,26 +208,26 @@ main {
         left: 0;
         right: 0;
       }
-
-      .title {
-        font-family: $medium;
-        font-size: 27px;
-        margin-bottom: 4px;
-      }
-
-      .desc {
-        font-size: 18px;
-      }
     }
 
     &:hover {
-      img {
-        opacity: 0.65;
-      }
-
       figcaption {
         opacity: 1;
       }
+    }
+  }
+
+  .sm-caption {
+    margin-top: 10px;
+
+    .title {
+      font-family: $bold;
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+
+    .desc {
+      font-size: 15px;
     }
   }
 }
@@ -552,7 +562,7 @@ footer {
   .inner {
     position: relative;
     height: 100%;
-    padding: 36px 27px;
+    padding: 27px 27px 36px;
   }
 
   .side-nav {

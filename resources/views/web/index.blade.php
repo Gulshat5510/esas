@@ -13,13 +13,17 @@
             <a href="{{ route('projects.show', $project->id) }}">
               <figure>
                 <img src="{{ $project->getCoverImage() }}" alt="img of {{ $project->name }}" class="object-cover-center">
-                <figcaption>
+                  <figcaption class="d-none d-md-block">
                   <div class="inner">
                     <div class="title">{{ $project->name }}</div>
                     <div class="desc">{{ $project->getFirstCategoryName() }}</div>
                   </div>
                 </figcaption>
               </figure>
+              <div class="sm-caption d-block d-md-none">
+                <div class="title">{{ $project->name }}</div>
+                <div class="desc">{{ $project->getFirstCategoryName() }}</div>
+              </div>
             </a>
           </div>
         </div>

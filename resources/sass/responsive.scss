@@ -202,6 +202,10 @@
 }
 
 @include media-breakpoint-down(sm) { // 767.98px
+  h4 {
+    font-size: 20px;
+  }
+
   .bg-light {
     padding-top: 0.7rem;
     padding-bottom: 0.7rem;
@@ -230,11 +234,20 @@
       height: 356px;
     }
   }
+
+  .project-item figure {
+    height: 320px;
+  }
 }
 
 @include media-breakpoint-down(xs) { // 575.98px
+  .container {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
   .project-item figure {
-    height: 320px;
+    height: 177px;
 
     figcaption {
       .title {
