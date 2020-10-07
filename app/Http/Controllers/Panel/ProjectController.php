@@ -32,8 +32,8 @@ class ProjectController extends Controller
             'name.*' => 'required',
             'description.*' => 'required',
             'file' => 'required|image|max:1000',
-            'client' => 'required',
-            'year' => 'required',
+            'client' => 'nullable',
+            'year' => 'nullable',
             'categories' => 'required|array|min:1',
             'images.*' => 'required|image|max:1000',
             'types.*' => 'required|in:wide,normal',
@@ -84,8 +84,8 @@ class ProjectController extends Controller
             'name.*' => 'required',
             'description.*' => 'required',
             'file' => 'image|max:1000',
-            'client' => 'required',
-            'year' => 'required',
+            'client' => 'nullable',
+            'year' => 'nullable',
             'categories' => 'required|array|min:1',
         ]);
 

@@ -95,10 +95,10 @@
         @endforeach
       </ul>
 
-      <ul>
-        <li><strong>Klient:</strong> {!! $project->client !!}</li>
-        <li><strong>Ýyly:</strong> {{ $project->year }}</li>
-      </ul>
+{{--      <ul>--}}
+{{--        <li><strong>Klient:</strong> {!! $project->client !!}</li>--}}
+{{--        <li><strong>Ýyly:</strong> {{ $project->year }}</li>--}}
+{{--      </ul>--}}
     </div>
 
     <div class="row galleries">

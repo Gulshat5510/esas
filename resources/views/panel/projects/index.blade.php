@@ -22,8 +22,8 @@
           <th>Surat</th>
           <th>Ady</th>
           <th>Gysga beýany</th>
-          <th>Klient</th>
-          <th>Ýyly</th>
+{{--          <th>Klient</th>--}}
+{{--          <th>Ýyly</th>--}}
           <th style="width: 120px"></th>
         </tr>
         </thead>
@@ -34,8 +34,8 @@
             <td><img src="{{ $project->getCoverImage() }}" alt="project-{{ $project->id }}" style="height: 70px;"></td>
             <td class="vam">{{ $project->name }}</td>
             <td class="vam">{{ $project->summary300() }}</td>
-            <td class="vam">{{ $project->clientSummary300() }}</td>
-            <td class="vam">{{ $project->year }}</td>
+{{--            <td class="vam">{{ $project->clientSummary300() }}</td>--}}
+{{--            <td class="vam">{{ $project->year }}</td>--}}
             <td class="vam sm-btn">
               <form action="{{ route('panel.projects.destroy', $project->id) }}" method="post" id="destroy-{{ $project->id }}">
                 @method('delete')
