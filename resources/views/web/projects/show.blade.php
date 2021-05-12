@@ -1,6 +1,12 @@
 @extends('layouts.web')
-
+ <div>
+      <img src="{{ $project->getCoverImage() }}" id="cover_img" class="img-fluid" alt="...">
+  </div>
 @section('title') {{ $project->name }} · @lang('main.projects') | @endsection
+
+@section('navbar')
+    @include('inc.sticky_navbar')
+@endsection
 
 @section('content')
   <section id="show">

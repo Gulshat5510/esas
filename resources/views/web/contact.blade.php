@@ -2,6 +2,10 @@
 
 @section('title') @lang('main.contact_us') | @endsection
 
+@section('navbar')
+    @include('inc.navbar')
+@endsection
+
 @section('flash-message')
   <div id="messages">
     @if(session('success'))

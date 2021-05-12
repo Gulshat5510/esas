@@ -16,4 +16,4 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/panel.scss', 'public/css')
     .version();
 
-mix.browserSync('gurban.test');
+mix.browserSync('esas.test');

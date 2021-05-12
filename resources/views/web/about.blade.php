@@ -2,7 +2,16 @@
 
 @section('title') @lang('main.about_us') | @endsection
 
+@section('navbar')
+    @include('inc.navbar')
+@endsection
+
 @section('content')
+<div class="__about col-lg-6 pl-0 mb-5">
+        @if($about)
+          <p id="desc" class="desc">{{ $about->desc }}</p>
+        @endif
+</div>
   <section id="about">
     @if($about)
       <div class="img-wrapper">
@@ -12,10 +21,7 @@
 
     <div class="row services">
       <div class="col-lg-6">
-        <h4>@lang('main.about_us')</h4>
-        @if($about)
-          <p class="desc">{{ $about->desc }}</p>
-        @endif
+      
 
         <div class="d-none d-lg-block">
           @include('inc.contacts')

@@ -2,6 +2,10 @@
 
 @section('title') @lang('main.projects') | @endsection
 
+@section('navbar')
+    @include('inc.navbar')
+@endsection
+
 @section('content')
   <section id="projects">
     <div class="controls">

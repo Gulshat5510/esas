@@ -1,9 +1,13 @@
 @extends('layouts.web')
 
+@section('navbar')
+    @include('inc.navbar')
+@endsection
+
 @section('content')
   <section id="home">
     @if($text)
-      <h4 class="home">{{ $text->description }}</h4>
+      <h4 class="home col-md-6 pl-0">{{ $text->description }}</h4>
     @endif
 
     <div class="row">
