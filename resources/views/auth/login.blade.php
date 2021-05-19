@@ -16,7 +16,7 @@
 <div class="login-wrapper">
   <div class="form-wrapper">
     <div class="text-center">
-      <a href="{{ route('index') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo" class="logo"></a>
+      <a href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo" class="logo"></a>
       <h4 class="mt-4 mb-5">Hoş geldiňiz</h4>
     </div>
     <form action="{{ route('login') }}" method="post">

@@ -68,7 +68,17 @@ a {
         border-color: #bf312d;
     }
 }
-
+#notification-bg {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.144);
+   z-index: 99;
+   display: none;
+}
 //navbar
 .flex-flow {
     flex-flow: row nowrap;
@@ -86,7 +96,6 @@ a {
 .navbar {
     padding-left: 0;
     padding-right: 0;
-
     .navbar-brand {
         color: #1c1c1c;
         font-family: $bold;
@@ -146,9 +155,15 @@ a {
     }
 }
 
+#cover_img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 #cover_img{
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 }
 #sticky_navbar {
     position: absolute;
@@ -167,6 +182,7 @@ a {
 }
 #desc {
     line-height: 40px;
+    font-size: 25px;
 }
 
 main {
@@ -577,7 +593,7 @@ footer {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 101;
     top: 0;
     left: 0;
     overflow-x: hidden;

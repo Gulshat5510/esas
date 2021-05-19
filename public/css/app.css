@@ -11008,6 +11008,18 @@ a:hover {
   border-color: #bf312d;
 }
 
+#notification-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.144);
+  z-index: 99;
+  display: none;
+}
+
 .flex-flow {
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -11080,9 +11092,17 @@ a:hover {
   color: #969696;
 }
 
+#cover_img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 #cover_img {
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 #sticky_navbar {
@@ -11103,6 +11123,7 @@ a:hover {
 
 #desc {
   line-height: 40px;
+  font-size: 25px;
 }
 
 main {
@@ -11452,7 +11473,7 @@ footer .btn-white:focus {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 101;
   top: 0;
   left: 0;
   overflow-x: hidden;

@@ -7,8 +7,8 @@ return [
     // Regional languages are sorted by their base language, so "British English" sorts as "English, British"
     'supportedLocales' => [
         'en'          => ['name' => 'English',                'script' => 'En', 'native' => 'English', 'regional' => 'en_GB'],
-        //'tk'          => ['name' => 'Turkmen',                'script' => 'Tk', 'native' => 'Türkmençe', 'regional' => 'tk_TM'],
-        'ru'          => ['name' => 'Russian',                'script' => 'Ру', 'native' => 'Русский', 'regional' => 'ru_RU'],
+        'tk'          => ['name' => 'Turkmen',                'script' => 'Tk', 'native' => 'Türkmençe', 'regional' => 'tk_TM'],
+        // 'ru'          => ['name' => 'Russian',                'script' => 'Ру', 'native' => 'Русский', 'regional' => 'ru_RU'],
         //'ace'         => ['name' => 'Achinese',               'script' => 'Latn', 'native' => 'Aceh', 'regional' => ''],
         //'af'          => ['name' => 'Afrikaans',              'script' => 'Latn', 'native' => 'Afrikaans', 'regional' => 'af_ZA'],
         //'agq'         => ['name' => 'Aghem',                  'script' => 'Latn', 'native' => 'Aghem', 'regional' => ''],

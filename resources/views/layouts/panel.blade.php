@@ -13,7 +13,7 @@
 
 <body>
 <div class="sidebar">
-  <div class="brand pb-0"><a href="{{ route('panel.index') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo"></a></div>
+  <div class="brand pb-0"><a href="{{ route('panel.index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a></div>
   <div class="inner">
     <ul class="menu">
       <li><a href="{{ route('panel.index') }}" class="menu-link {{ request()->is('panel') ? 'active' : '' }}"><i data-icon="home"></i>Baş sahypa</a></li>

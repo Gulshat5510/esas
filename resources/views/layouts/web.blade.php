@@ -39,11 +39,13 @@
   </div>
 </footer>
 
-<div class="aside d-block d-sm-none" id="menu">
+<div id="notification-bg" onclick="closeNav()"></div>
+<div id="notification">
+  <div class="aside d-block d-sm-none" id="menu">
   <div class="inner">
     <div class="side-nav">
       <div class="float-left">
-        <a href="{{ route('index') }}"><img src="{{ asset('images/logo.svg') }}" alt="logo"></a>
+        <a href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a>
       </div>
       <div class="float-right">
         <span onclick="closeNav()"><i data-icon="x"></i></span>
@@ -70,22 +72,27 @@
     </div>
   </div>
 </div>
+</div>
+
 
 </body>
 <script src="{{ mix('js/app.js') }}"></script>
 <script>
     function openNav() {
         document.getElementById("menu").style.width = "75%";
+        document.getElementById("notification-bg").style.display = "block";
     }
 
     function closeNav() {
         document.getElementById("menu").style.width = "0";
+        document.getElementById("notification-bg").style.display = "none";
     }
 
     $(function () {
         $('i[data-icon="menu"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
         $('i[data-icon="x"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
     });
+
 </script>
 @yield('js')
 </html>

@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-lg-6">
         <h4>{{ $project->name }}</h4>
-        <h6>@lang('main.what_have_we_done'):</h6>
+        {{-- <h6>@lang('main.what_have_we_done'):</h6> --}}
         <ul class="categories">
           @foreach($project->categories as $category)
             <li>{{ $category->name }}</li>

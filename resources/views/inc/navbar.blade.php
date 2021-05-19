@@ -1,3 +1,5 @@
+<div class="bg-navbar">
+</div>
 <nav class="navbar navbar-light flex-flow bg-light">
   <div class="container">
     <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a>
