@@ -24,7 +24,7 @@
       
 
         <div class="d-none d-lg-block">
-          @include('inc.contacts')
+          @include('inc.contacts', ['arr' => $arr])
         </div>
       </div>
 

@@ -17,10 +17,10 @@
   <div class="inner">
     <ul class="menu">
       <li><a href="{{ route('panel.index') }}" class="menu-link {{ request()->is('panel') ? 'active' : '' }}"><i data-icon="home"></i>Baş sahypa</a></li>
-      <li><a href="{{ route('panel.about.index') }}" class="menu-link {{ request()->is('*about*') ? 'active' : '' }}"><i data-icon="file-text"></i>About us</a></li>
+      <li><a href="{{ route('panel.about.index') }}" class="menu-link {{ request()->is('*about*') ? 'active' : '' }}"><i data-icon="file-text"></i>Biz barada</a></li>
       <li><a href="{{ route('panel.categories.index') }}" class="menu-link {{ request()->is('panel/categories*') ? 'active' : ''}}"><i data-icon="layers"></i>Kategoriýalar</a></li>
       <li><a href="{{ route('panel.projects.index') }}" class="menu-link {{ request()->is('panel/projects*') ? 'active' : '' }}"><i data-icon="briefcase"></i>Proýektler</a></li>
-      <li><a href="{{ route('panel.contact.index') }}" class="menu-link {{ request()->is('panel/contact*') ? 'active' : '' }}"><i data-icon="inbox"></i>Gelen hatlar</a></li>
+      <li><a href="{{ route('panel.contact.index') }}" class="menu-link {{ request()->is('panel/contact*') ? 'active' : '' }}"><i data-icon="inbox"></i>Habarlaşmak</a></li>
     </ul>
   </div>
 </div>

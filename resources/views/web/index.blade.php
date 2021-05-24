@@ -33,5 +33,10 @@
         </div>
       @endforeach
     </div>
+    @if ($count_projects >6)
+        <div class="more text-right">
+      <a href="{{ route('projects') }}">@lang('main.all_projects')</a>
+    </div>
+    @endif
   </section>
 @endsection

@@ -10,31 +10,52 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $mails = Contact::orderBy('read')->paginate(30);
+        $phone = Contact::whereSlug('phone')->first();
+        $email = Contact::whereSlug('email')->first();
+        $address = Contact::whereSlug('address')->first();
+        $instagram = Contact::whereSlug('instagram')->first();
+        $behance = Contact::whereSlug('behance')->first();
 
-        return view('panel.contact.index', compact('mails'));
+        return view('panel.contact.index', compact('phone','address','instagram','behance','email'));
     }
 
-    public function show(Contact $contact)
+    public function edit(Contact $contact, Request $request)
     {
-        $contact->read = true;
+        $is_create = false;
+        if($request->has('is_create')){
+            $is_create = true;
+        }
+        return view('panel.contact.edit', compact('contact', 'is_create'));
+    }
+
+     public function update(Contact $contact, Request $request)
+    {
+        $request->validate([
+            'data' => 'required_without:address',
+            'address.*' => 'required_without:data'
+        ]);
+        
+        if($contact->slug == 'address') {
+            $contact->address = $request->get('address');
+        } else {
+            $contact->data = $request->get('data');
+        }
+        
         $contact->save();
 
-        return view('panel.contact.show', compact('contact'));
+        return redirect()->route('panel.contact.index')->with('success', 'Habarlaşmak maglumaty üýtgedildi');
     }
 
     public function destroy(Contact $contact)
     {
-        if ($contact->filename) {
-            $path = public_path('uploads/contact/' . $contact->filename);
-
-            if (is_file($path)) {
-                unlink($path);
-            }
+     if($contact->slug == 'address') {
+            $contact->address = null;
+        } else {
+            $contact->data = null;
         }
+        
+        $contact->save();
 
-        $contact->delete();
-
-        return redirect()->route('panel.contact.index')->with('danger', 'Hat pozuldy');
+        return redirect()->route('panel.contact.index')->with('danger', 'Habarlaşmak maglumaty pozuldy');
     }
 }

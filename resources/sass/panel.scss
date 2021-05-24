@@ -1,17 +1,17 @@
 // Fonts
 @font-face {
-  font-family: 'SuisseIntl-Medium';
-  src: local('SuisseIntl-Medium'), url('/fonts/SuisseIntl-Medium.otf') format('truetype');
+  font-family: 'TTNormsPro-Regular';
+  src: local('TTNormsPro-Regular'), url('/fonts/TTNormsPro/TTNormsPro-Regular.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'SuisseIntl-Regular';
-  src: local('SuisseIntl-Regular'), url('/fonts/SuisseIntl-Regular.otf') format('truetype');
+  font-family: 'TTNormsPro-Medium';
+  src: local('TTNormsPro-Medium'), url('/fonts/TTNormsPro/TTNormsPro-Medium.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'SuisseIntl-Medium';
-  src: local('SuisseIntl-Medium'), url('/fonts/SuisseIntl-Medium.otf') format('truetype');
+  font-family: 'TTNormsPro-Bold';
+  src: local('TTNormsPro-Bold'), url('/fonts/TTNormsPro/TTNormsPro-Bold.otf') format('opentype');
 }
 
 @import 'panel_variables';
@@ -68,6 +68,10 @@ h4, h6 {
 
 .btn {
   border-radius: 8px;
+}
+
+.pt-md-39 {
+padding-top: 39px;
 }
 
 .btn-success-inv {

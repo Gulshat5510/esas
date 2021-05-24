@@ -12,9 +12,6 @@ Route::namespace('Web')
         Route::get('projects/{project}/show', 'ProjectController@show')->name('projects.show');
 
         Route::get('about', 'WebController@about')->name('about');
-
-        Route::get('contact', 'ContactController@index')->name('contact.index');
-        Route::post('contact', 'ContactController@store')->name('contact.store');
     });
 
 // login
@@ -38,6 +35,8 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->middleware('auth')->
     Route::resource('categories', 'CategoryController')->except('show');
 
     // projects & project images
+    Route::get('projects/order', 'ProjectController@orderForm')->name('projects.order.form');
+    Route::post('projects/order', 'ProjectController@order')->name('projects.order');
     Route::resource('projects', 'ProjectController');
     Route::get('projects/{project}/images', 'ImageController@create')->name('projects.images.create');
     Route::post('projects/{project}/images', 'ImageController@store')->name('projects.images.store');
@@ -45,12 +44,9 @@ Route::namespace('Panel')->prefix('panel')->name('panel.')->middleware('auth')->
     Route::patch('images/order', 'ImageController@orderUpdate')->name('images.order');
     Route::delete('images/{image}', 'ImageController@destroy')->name('images.destroy');
     Route::patch('images/{image}/type', 'ImageController@type')->name('images.type');
-
     // contacts
-    Route::get('contacts', 'ContactController@index')->name('contact.index');
-    Route::get('contacts/{contact}/show', 'ContactController@show')->name('contact.show');
-    Route::delete('contacts/{contact}', 'ContactController@destroy')->name('contact.destroy');
-
+    Route::resource('contact', 'ContactController');
+    
     // about
     Route::resource('about', 'AboutController')->except('show');
 

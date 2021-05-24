@@ -23,28 +23,6 @@
     @csrf
     @method('patch')
     <div class="row">
-{{--      <div class="col-md-12">--}}
-      {{--        <div class="form-group">--}}
-      {{--          <label for="client" class="w-100"><strong>Klient <span class="text-danger">*</span></strong></label>--}}
-      {{--          <textarea name="client" id="client" class="form-control editor {{ $errors->has('client') ? 'is-invalid' : '' }}" required>{{ $project->client }}</textarea>--}}
-      {{--          @if ($errors->has('client'))--}}
-      {{--            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('client') }}</strong></span>--}}
-      {{--          @else--}}
-      {{--            <span class="invalid-feedback" role="alert"><strong>Hökman klient maglumadyny ýazmaly</strong></span>--}}
-      {{--          @endif--}}
-      {{--        </div>--}}
-      {{--      </div>--}}
-      {{--      <div class="col-md-3">--}}
-      {{--        <div class="form-group">--}}
-      {{--          <label for="year" class="w-100"><strong>Ýyly</strong></label>--}}
-      {{--          <input type="text" name="year" id="year" class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" value="{{ $project->year }}" required>--}}
-      {{--          @if ($errors->has('year'))--}}
-      {{--            <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('year') }}</strong></span>--}}
-      {{--          @else--}}
-      {{--            <span class="invalid-feedback" role="alert"><strong>Hökman ýylyny ýazmaly</strong></span>--}}
-      {{--          @endif--}}
-      {{--        </div>--}}
-      {{--      </div>--}}
       <div class="col-md-6">
         <div class="form-group">
           <label for="file" class="w-100"><strong>Cover surat saýlaň <span class="text-danger ml-1">*</span></strong></label>
@@ -52,6 +30,15 @@
           @if ($errors->has('file'))
             <span class="invalid-feedback" role="alert"><strong>{{ $errors->first('file') }}</strong></span>
           @endif
+        </div>
+      </div>
+      <div class="pt-md-39 col-md-6">
+        <div class="form-group">
+          <label class="check-label">
+            <span class="text">Proýektiňiz home page da görünsinmi?</span>
+            <input type="checkbox" value="1" name="is_selected" {{ $project->is_selected ? 'checked' : '' }}>
+            <span class="check-mark"></span>
+          </label>
         </div>
       </div>
     </div>

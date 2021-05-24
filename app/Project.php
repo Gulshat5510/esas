@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasTranslations;
 
-    protected $fillable = ['name', 'description', 'cover', 'client', 'year'];
+    protected $fillable = ['name', 'description', 'cover', 'order', 'is_selected'];
     public $translatable = ['name', 'description'];
 
     public function categories()

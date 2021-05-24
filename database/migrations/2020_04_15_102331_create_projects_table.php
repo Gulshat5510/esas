@@ -18,8 +18,8 @@ class CreateProjectsTable extends Migration
             $table->json('name');
             $table->json('description');
             $table->string('cover');
-            $table->text('client')->nullable();
-            $table->string('year')->nullable();
+            $table->unsignedTinyInteger('order')->nullable();
+            $table->boolean('is_selected')->default(false);
             $table->timestamps();
         });
     }

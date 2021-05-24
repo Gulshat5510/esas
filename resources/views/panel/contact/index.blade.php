@@ -1,66 +1,116 @@
 @extends('layouts.panel')
 
-@section('title') Gelen hatlar @endsection
-
-@section('css')
-  <style>
-    .bold {
-      font-weight: bold;
-    }
-  </style>
-@endsection
+@section('title') Habarlaşmak @endsection
 
 @section('breadcrumb')
   <li class="breadcrumb-item"><a href="{{ route('panel.index') }}">Baş sahypa</a></li>
-  <li class="breadcrumb-item active" aria-current="page">Gelen hatlar</li>
+  <li class="breadcrumb-item active" aria-current="page">Habarlaşmak</li>
 @endsection
 
 @section('content')
-  <div class="table-responsive br-8">
-    @if(count($mails))
-      <table class="table table table-striped sh-main br-8">
-        <thead>
-        <tr>
-          <th style="width: 15px">#</th>
-          <th>Ady</th>
-          <th>Telefon</th>
-          <th>Email</th>
-          <th>Tekst</th>
-          <th>File</th>
-          <th>Wagty</th>
-          <th style="width: 120px"></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($mails as $mail)
-          <tr class="{{ $mail->read ? '' : 'bold' }}">
-            <td class="vam">{{ $loop->iteration }}</td>
-            <td class="vam">{{ $mail->name }}</td>
-            <td class="vam">{{ $mail->phone }}</td>
-            <td class="vam">{{ $mail->email }}</td>
-            <td class="vam">{{ $mail->summary300() }}</td>
-            <td class="vam">
-              @if($mail->filename) <a href="{{ asset('uploads/contact/' . $mail->filename) }}" target="_blank">Bar</a> @else Ýok @endif
-            </td>
-            <td class="vam">{{ date('d.m.Y', strtotime($mail->created_at)) }} ý</td>
-            <td class="vam sm-btn">
-              <form action="{{ route('panel.contact.destroy', $mail->id) }}" method="post" id="destroy-{{ $mail->id }}">
-                @method('delete')
-                @csrf
-                <a href="{{ route('panel.contact.show', $mail->id) }}" class="btn btn-primary-inv" title="Giňişleýin"><i data-icon="eye"></i></a>
-                <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $mail->id }}').submit(); }" class="btn btn-danger-inv"
-                   title="Pozmak"><i data-icon="trash"></i></a>
-              </form>
-            </td>
-          </tr>
-        @endforeach
-        </tbody>
-      </table>
-      <div class="my-3 justify-content-center">{{ $mails->links() }}</div>
+ <div class="wrapper sh-main br-8 mt-5">
+    @if($phone->data)
+      <form action="{{ route('panel.contact.destroy', $phone->id) }}" method="post" id="destroy-{{ $phone->id }}" class="float-right">
+        @method('delete')
+        @csrf
+        <a href="{{ route('panel.contact.edit', $phone->id) }}" class="btn btn-add sh-main" title="Üýtgetmek"><i data-icon="edit"></i></a>
+        <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $phone->id }}').submit(); }" class="btn btn-add sh-main"
+           title="Pozmak"><i data-icon="trash"></i></a>
+      </form>
     @else
-      <div class="wrapper sh-main">
-        Entäk gelen hat ýok
-      </div>
+      <a href="{{ route('panel.contact.edit', $phone->id) }}?is_create=true" class="btn btn-add sh-main float-right"><i data-icon="add"></i></a>
+    @endif
+
+    @if($phone->data)
+    <p>Telefon nomeri: <a href="tel:{{ $phone->data }}" target="_blank">{{ $phone->data }}</a> </p>  
+    @else 
+    <p>Telefon nomeri goşuň</p>  
+    @endif
+  </div>
+
+   <div class="wrapper sh-main br-8 mt-5">
+    @if($email->data)
+      <form action="{{ route('panel.contact.destroy', $email->id) }}" method="post" id="destroy-{{ $email->id }}" class="float-right">
+        @method('delete')
+        @csrf
+        <a href="{{ route('panel.contact.edit', $email->id) }}" class="btn btn-add sh-main" title="Üýtgetmek"><i data-icon="edit"></i></a>
+        <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $email->id }}').submit(); }" class="btn btn-add sh-main"
+           title="Pozmak"><i data-icon="trash"></i></a>
+      </form>
+    @else
+      <a href="{{ route('panel.contact.edit', $email->id) }}?is_create=true" class="btn btn-add sh-main float-right"><i data-icon="add"></i></a>
+    @endif
+
+    @if($email->data)
+    <p>Email: <a href="mailto:{{ $email->data }}" target="_blank">{{ $email->data }}</a> </p> 
+    @else 
+    <p>Email adresi goşuň</p>   
+    @endif
+  </div>
+
+   <div class="wrapper sh-main br-8 mt-5">
+    @if(array_key_exists('en', $address->getTranslations('address')) && array_key_exists('tk', $address->getTranslations('address')))
+      <form action="{{ route('panel.contact.destroy', $address->id) }}" method="post" id="destroy-{{ $address->id }}" class="float-right">
+        @method('delete')
+        @csrf
+        <a href="{{ route('panel.contact.edit', $address->id) }}" class="btn btn-add sh-main" title="Üýtgetmek"><i data-icon="edit"></i></a>
+        <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $address->id }}').submit(); }" class="btn btn-add sh-main"
+           title="Pozmak"><i data-icon="trash"></i></a>
+      </form>
+    @else
+      <a href="{{ route('panel.contact.edit', $address->id) }}?is_create=true" class="btn btn-add sh-main float-right"><i data-icon="add"></i></a>
+    @endif
+
+    @if(array_key_exists('en', $address->getTranslations('address')) && array_key_exists('tk', $address->getTranslations('address')))
+    <h4>Adresi</h4>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+          <fieldset class="mt-3">
+            <legend>{{ $properties['native'] }}</legend>
+            <p>{{ $address->getTranslation('address', $localeCode) }}</p>
+          </fieldset>
+        @endforeach   
+        @else 
+    <p>Adresi goşuň</p> 
+    @endif
+  </div>
+
+  <div class="wrapper sh-main br-8 mt-5">
+    @if($instagram->data)
+      <form action="{{ route('panel.contact.destroy', $instagram->id) }}" method="post" id="destroy-{{ $instagram->id }}" class="float-right">
+        @method('delete')
+        @csrf
+        <a href="{{ route('panel.contact.edit', $instagram->id) }}" class="btn btn-add sh-main" title="Üýtgetmek"><i data-icon="edit"></i></a>
+        <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $instagram->id }}').submit(); }" class="btn btn-add sh-main"
+           title="Pozmak"><i data-icon="trash"></i></a>
+      </form>
+    @else
+      <a href="{{ route('panel.contact.edit', $instagram->id) }}?is_create=true" class="btn btn-add sh-main float-right"><i data-icon="add"></i></a>
+    @endif
+
+    @if($instagram->data)
+    <p>Instagram: <a href="{{ $instagram->data }}" target="_blank">{{ $instagram->data }}</a> </p>
+    @else 
+    <p>Instagram adresi goşuň</p>  
+    @endif
+  </div>
+
+   <div class="wrapper sh-main br-8 mt-5">
+    @if($behance->data)
+      <form action="{{ route('panel.contact.destroy', $behance->id) }}" method="post" id="destroy-{{ $behance->id }}" class="float-right">
+        @method('delete')
+        @csrf
+        <a href="{{ route('panel.contact.edit', $behance->id) }}" class="btn btn-add sh-main" title="Üýtgetmek"><i data-icon="edit"></i></a>
+        <a href="#" onclick="if (confirm('Pozmak isleýäňizmi?')) { document.getElementById('destroy-{{ $behance->id }}').submit(); }" class="btn btn-add sh-main"
+           title="Pozmak"><i data-icon="trash"></i></a>
+      </form>
+    @else
+      <a href="{{ route('panel.contact.edit', $behance->id) }}?is_create=true" class="btn btn-add sh-main float-right"><i data-icon="add"></i></a>
+    @endif
+
+    @if($behance->data)
+    <p>Behance: <a href="{{ $behance->data }}" target="_blank">{{ $behance->data }}</a> </p>
+    @else 
+    <p>Behance adresi goşuň</p>
     @endif
   </div>
 @endsection

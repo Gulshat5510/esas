@@ -19,6 +19,10 @@
   footer .social-lists li + li {
     margin-left: 15px;
   }
+  
+  #address{
+    width: 255px;
+  }
 }
 
 @include media-breakpoint-up(md) { // 768px

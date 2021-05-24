@@ -9,6 +9,7 @@
 
 @section('top-left')
   <a href="{{ route('panel.projects.create') }}" class="btn btn-add sh-main float-right"><i data-icon="add"></i> Täze goşmak</a>
+  <a href="{{ route('panel.projects.order.form') }}" class="btn btn-add sh-main float-right mr-2"><i data-icon="list"></i> Tertiplemek</a>
   <div class="clearfix"></div>
 @endsection
 
@@ -22,8 +23,7 @@
           <th>Surat</th>
           <th>Ady</th>
           <th>Gysga beýany</th>
-{{--          <th>Klient</th>--}}
-{{--          <th>Ýyly</th>--}}
+         <th>Saýlanan</th>
           <th style="width: 120px"></th>
         </tr>
         </thead>
@@ -35,7 +35,11 @@
             <td class="vam">{{ $project->name }}</td>
             <td class="vam">{{ $project->summary300() }}</td>
 {{--            <td class="vam">{{ $project->clientSummary300() }}</td>--}}
-{{--            <td class="vam">{{ $project->year }}</td>--}}
+           <td class="vam">
+             @if ($project->is_selected)
+                &#10003;
+             @endif
+            </td>
             <td class="vam sm-btn">
               <form action="{{ route('panel.projects.destroy', $project->id) }}" method="post" id="destroy-{{ $project->id }}">
                 @method('delete')

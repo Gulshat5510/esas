@@ -22,7 +22,7 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::all();
-
+        
         return view('panel.projects.create', compact('categories'));
     }
 
@@ -37,9 +37,15 @@ class ProjectController extends Controller
             'categories' => 'required|array|min:1',
             'images.*' => 'required|image|max:1000',
             'types.*' => 'required|in:wide,normal',
+            'is_selected' => 'nullable'
         ]);
 
         $data['cover'] = $this->fetchImage($data['file']);
+
+        if(Project::whereIsSelected(true)->count() >= 6){
+            $selected_project = Project::whereIsSelected(true)->first();
+            $selected_project->update(['is_selected' => false]);
+        }
 
         $project = Project::create($data);
 
@@ -87,8 +93,13 @@ class ProjectController extends Controller
             'client' => 'nullable',
             'year' => 'nullable',
             'categories' => 'required|array|min:1',
+            'is_selected' => 'nullable'
         ]);
 
+        if(!$request->has('is_selected') && $project->is_selected){
+            $data['is_selected'] = false;
+        }
+        
         if ($request->has('file')) {
             $this->removeImagePath($project->cover);
             $data['cover'] = $this->fetchImage($data['file']);
@@ -96,7 +107,6 @@ class ProjectController extends Controller
 
         $project->update($data);
         $project->categories()->sync($data['categories']);
-
         return redirect()->route('panel.projects.index')->with('success', 'Proýekt üýtgedildi.');
     }
 
@@ -113,6 +123,21 @@ class ProjectController extends Controller
         return redirect()->route('panel.projects.index')->with('danger', 'Proýekt pozuldy.');
     }
 
+    public function orderForm()
+    {
+        $projects = Project::whereIsSelected(true)->orderBy('order')->get();
+
+        return view('panel.projects.projects_order', compact('projects'));
+    }
+
+    public function order(Request $request)
+    {
+        foreach ($request->get('ids', []) as $key => $id) {
+            Project::whereId($id)->update(['order' => $key + 1]);
+        }
+
+        return redirect()->route('panel.projects.index')->with('success', 'Proýekt tertiplendi.');
+    }
 
     private function fetchImage($img)
     {

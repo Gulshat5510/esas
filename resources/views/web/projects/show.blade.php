@@ -1,6 +1,6 @@
 @extends('layouts.web')
- <div>
-      <img src="{{ $project->getCoverImage() }}" id="cover_img" class="img-fluid" alt="...">
+ <div id="cover_img">
+      <img src="{{ $project->getCoverImage() }}" class="img-fluid" alt="...">
   </div>
 @section('title') {{ $project->name }} · @lang('main.projects') | @endsection
 
@@ -69,7 +69,7 @@
     </div>
 
     <div class="more">
-      <a href="{{ route('projects') }}">@lang('main.all_projects') <span><i data-icon="arrow"></i></span></a>
+      <a href="{{ route('projects') }}">@lang('main.all_projects')</a>
     </div>
   </section>
 @endsection
