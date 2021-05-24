@@ -14,7 +14,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::paginate(28);
+        $projects = Project::paginate(20);
+        $count_selected = Project::whereIsSelected(true)->count();
 
         return view('panel.projects.index', compact('projects'));
     }
@@ -22,7 +23,7 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::all();
-        
+
         return view('panel.projects.create', compact('categories'));
     }
 
@@ -42,7 +43,7 @@ class ProjectController extends Controller
 
         $data['cover'] = $this->fetchImage($data['file']);
 
-        if(Project::whereIsSelected(true)->count() >= 6){
+        if (Project::whereIsSelected(true)->count() >= 6) {
             $selected_project = Project::whereIsSelected(true)->first();
             $selected_project->update(['is_selected' => false]);
         }
@@ -96,10 +97,10 @@ class ProjectController extends Controller
             'is_selected' => 'nullable'
         ]);
 
-        if(!$request->has('is_selected') && $project->is_selected){
+        if (!$request->has('is_selected') && $project->is_selected) {
             $data['is_selected'] = false;
         }
-        
+
         if ($request->has('file')) {
             $this->removeImagePath($project->cover);
             $data['cover'] = $this->fetchImage($data['file']);
@@ -125,6 +126,10 @@ class ProjectController extends Controller
 
     public function orderForm()
     {
+        if (Project::whereIsSelected(true)->count() <= 1) {
+            return redirect()->route('panel.pro.inde')->with('war', 'asdfdghh');
+        }
+
         $projects = Project::whereIsSelected(true)->orderBy('order')->get();
 
         return view('panel.projects.projects_order', compact('projects'));
@@ -132,6 +137,10 @@ class ProjectController extends Controller
 
     public function order(Request $request)
     {
+        if (Project::whereIsSelected(true)->count() <= 1) {
+            return redirect()->route('panel.pro.inde')->with('war', 'asdfdghh');
+        }
+
         foreach ($request->get('ids', []) as $key => $id) {
             Project::whereId($id)->update(['order' => $key + 1]);
         }

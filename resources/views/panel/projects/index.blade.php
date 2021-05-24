@@ -9,7 +9,9 @@
 
 @section('top-left')
   <a href="{{ route('panel.projects.create') }}" class="btn btn-add sh-main float-right"><i data-icon="add"></i> Täze goşmak</a>
+  @if($count_selected > 1)
   <a href="{{ route('panel.projects.order.form') }}" class="btn btn-add sh-main float-right mr-2"><i data-icon="list"></i> Tertiplemek</a>
+  @endif
   <div class="clearfix"></div>
 @endsection
 
