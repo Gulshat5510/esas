@@ -30,6 +30,10 @@ class ProjectController extends Controller
             $query->where('project_id', '!=', $id)->whereIn('category_id', $arr);
         })->get()->take(2);
 
+        if(count($projects)==0){
+            $projects = Project::where('id', '!=', $project->id)->get()->random(2);
+        }
+        
         return view('web.projects.show', compact('project', 'projects'));
     }
 }

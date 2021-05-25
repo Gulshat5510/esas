@@ -73,7 +73,6 @@
     </div>
   </section>
 @endsection
-
 @section('js')
   <script>
       $(function () {
