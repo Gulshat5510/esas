@@ -13,7 +13,6 @@
     <div class="row">
       <div class="col-lg-6">
         <h4>{{ $project->name }}</h4>
-        {{-- <h6>@lang('main.what_have_we_done'):</h6> --}}
         <ul class="categories">
           @foreach($project->categories as $category)
             <li>{{ $category->name }}</li>
@@ -35,14 +34,9 @@
           </div>
         @endforeach
       </div>
-
-      {{--      <ul class="owner">--}}
-      {{--        <li class="mb-3">{!! $project->client !!}</li>--}}
-      {{--        <li>{{ $project->year }} @lang('main.year')</li>--}}
-      {{--      </ul>--}}
     </div>
 
-    <h6 class="dark">@lang('main.other_works')</h6>
+    <h5>@lang('main.other_works')</h5>
 
     <div class="row">
       @foreach($projects as $project)

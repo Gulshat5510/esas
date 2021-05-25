@@ -8,9 +8,9 @@
 
 @section('content')
 <div class="__about col-lg-6 pl-0 mb-5">
-        @if($about)
-          <p id="desc" class="desc">{{ $about->desc }}</p>
-        @endif
+  @if($about)
+    <p id="desc" class="desc">{{ $about->desc }}</p>
+  @endif
 </div>
   <section id="about">
     @if($about)
@@ -24,12 +24,22 @@
       
 
         <div class="d-none d-lg-block">
-          @include('inc.contacts', ['arr' => $arr])
+          <h5 class="contact">@lang('main.contacts')</h5>
+          <ul>
+            <li id="address">{{ $arr['address']->address }}</li>
+            <li><a href="tel:{{ $arr['phone']->data }}">{{ $arr['phone']->data }}</a></li>
+            <li><a href="mailto:{{ $arr['email']->data }}">{{ $arr['email']->data }}</a></li>
+          </ul>
+
+          <ul class="social-lists">
+            <li><a href="{{ $arr['instagram']->data }}">Instagram</a></li>
+            <li><a href="{{ $arr['behance']->data }}">Behance</a></li>
+          </ul>
         </div>
       </div>
 
       <div class="col-lg-6">
-        <h4>@lang('main.services')</h4>
+        <h5 class="contact">@lang('main.services')</h5>
         <ul>
           <li>@lang('main.branding_strategy')</li>
           <li>@lang('main.brand_platform')</li>

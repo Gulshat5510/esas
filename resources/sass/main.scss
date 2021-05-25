@@ -7,17 +7,24 @@ body {
 }
 
 h4 {
-    font-size: 27px;
-    //font-family: $bold;
+    font-size: 38px;
+    font-family: $medium;
 }
 
 h5 {
-    font-size: 22px;
+    font-size: 28px;
+    font-family: $medium;
+    margin-bottom: 30px;
+
+    &.contact {
+        font-size: 25px;
+        margin-bottom: 14px;
+    }
 }
 
 h6 {
     font-size: 18px;
-    font-family: $bold;
+    font-family: $medium;
 }
 
 ul {
@@ -75,7 +82,7 @@ a {
     width: 100%;
     border-bottom: 1px solid #f0f0f0;
     z-index: 350;
-    top: -61px;
+    top: -72px;
     transition: ease-in-out all 0.4s;
 }
 
@@ -94,6 +101,11 @@ a {
     z-index: 99;
     display: none;
 }
+
+.from-col p {
+    line-height: 26px;
+}
+
 //navbar
 .flex-flow {
     flex-flow: row nowrap;
@@ -111,9 +123,10 @@ a {
 .navbar {
     padding-left: 0;
     padding-right: 0;
+
     .navbar-brand {
         color: #1c1c1c;
-        font-family: $bold;
+        font-family: $medium;
         font-size: 30px;
         letter-spacing: 0.54px;
 
@@ -169,16 +182,19 @@ a {
         }
     }
 }
+
 #cover_img img {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
+
 #cover_img {
     height: 80vh;
     width: 100%;
     overflow: hidden;
 }
+
 #sticky_navbar {
     position: absolute;
     top: 0;
@@ -194,6 +210,7 @@ a {
         }
     }
 }
+
 #desc {
     line-height: 40px;
     font-size: 25px;
@@ -276,7 +293,7 @@ main {
         margin-top: 10px;
 
         .title {
-            font-family: $bold;
+            font-family: $medium;
             font-size: 18px;
             margin-bottom: 0;
         }
@@ -290,7 +307,7 @@ main {
 #contact {
     h4 {
         font-size: 25px;
-        font-family: $bold;
+        font-family: $medium;
         margin-bottom: 1rem;
     }
 
@@ -306,7 +323,7 @@ main {
     }
 
     .lists {
-        font-family: $bold;
+        font-family: $medium;
         font-size: 25px;
 
         li {
@@ -372,7 +389,7 @@ main {
     }
 
     h4 {
-        font-family: $bold;
+        font-family: $medium;
         margin-bottom: 10px;
 
         &.heading {
@@ -384,7 +401,7 @@ main {
     .services ul {
         margin-bottom: 24px;
 
-        li + li {
+        li+li {
             margin-top: 7px;
         }
     }
@@ -425,6 +442,7 @@ main {
 }
 
 .was-validated {
+
     .form-control:valid:focus,
     .form-control:invalid:focus {
         box-shadow: none;
@@ -467,6 +485,7 @@ main {
     .categories {
         li {
             display: inline-block;
+            color: #969696;
 
             &:after {
                 display: inline-block;
@@ -503,7 +522,7 @@ main {
         margin-top: 12px;
         margin-bottom: 32px;
 
-        li + li {
+        li+li {
             margin-top: 6px;
         }
     }
@@ -556,6 +575,17 @@ main {
                 }
             }
         }
+    }
+}
+
+#show .more a,
+.more a {
+    font-size: 25px;
+    font-family: $medium;
+    color: #000;
+
+    &:hover {
+        color: #969696;
     }
 }
 
@@ -647,7 +677,7 @@ footer {
 
         ul {
             font-size: 27px;
-            font-family: $bold;
+            font-family: $medium;
 
             li {
                 margin-bottom: 20px;
@@ -685,7 +715,7 @@ footer {
             outline: none;
         }
 
-        & + button {
+        &+button {
             margin-left: 24px;
         }
     }
@@ -703,6 +733,7 @@ footer {
 }
 
 @media screen and (min-width: 768px) {
+
     .mix,
     .gap {
         width: calc(100% / 2 - (((2 - 1) * 1.875rem) / 2));
