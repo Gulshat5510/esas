@@ -36,6 +36,11 @@
     text-align: right;
   }
 
+  #navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   .navbar {
     padding-top: 26px;
     padding-bottom: 26px;
@@ -243,6 +248,10 @@
   .project-item figure {
     height: 320px;
   }
+  #navbar {
+    top: -70px;
+    padding: 0;
+}
 }
 
 @include media-breakpoint-down(xs) { // 575.98px

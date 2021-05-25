@@ -17,7 +17,7 @@ class ProjectController extends Controller
         $projects = Project::paginate(20);
         $count_selected = Project::whereIsSelected(true)->count();
 
-        return view('panel.projects.index', compact('projects'));
+        return view('panel.projects.index', compact('projects','count_selected'));
     }
 
     public function create()
@@ -127,7 +127,7 @@ class ProjectController extends Controller
     public function orderForm()
     {
         if (Project::whereIsSelected(true)->count() <= 1) {
-            return redirect()->route('panel.pro.inde')->with('war', 'asdfdghh');
+            return redirect()->route('panel.projects.index')->with('warning', '1 proýekti tertipläp bolmaýar!');
         }
 
         $projects = Project::whereIsSelected(true)->orderBy('order')->get();
@@ -138,7 +138,7 @@ class ProjectController extends Controller
     public function order(Request $request)
     {
         if (Project::whereIsSelected(true)->count() <= 1) {
-            return redirect()->route('panel.pro.inde')->with('war', 'asdfdghh');
+            return redirect()->route('panel.projects.index')->with('warning', '1 proýekti tertipläp bolmaýar!');
         }
 
         foreach ($request->get('ids', []) as $key => $id) {

@@ -11008,6 +11008,20 @@ a:hover {
   border-color: #bf312d;
 }
 
+#navbar {
+  background: white;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+  z-index: 350;
+  top: -61px;
+  transition: ease-in-out all 0.4s;
+}
+
+#navbar.show {
+  top: 0;
+}
+
 #notification-bg {
   position: fixed;
   top: 0;
@@ -11100,7 +11114,7 @@ a:hover {
 }
 
 #cover_img {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   overflow: hidden;
 }
@@ -11408,7 +11422,7 @@ main {
 
 #show .more {
   text-align: right;
-  padding-right: 80px;
+  padding-right: 0;
 }
 
 #show .more a {
@@ -11614,6 +11628,11 @@ footer .btn-white:focus {
     text-align: right;
   }
 
+  #navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   .navbar {
     padding-top: 26px;
     padding-bottom: 26px;
@@ -11795,6 +11814,11 @@ footer .btn-white:focus {
 
   .project-item figure {
     height: 320px;
+  }
+
+  #navbar {
+    top: -70px;
+    padding: 0;
   }
 }
 

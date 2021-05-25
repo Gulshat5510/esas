@@ -13,7 +13,22 @@
 <body>
 @yield('flash-message')
 
+<div class="bg-navbar"></div>
 @yield('navbar')
+
+<nav id="navbar" class="navbar navbar-light flex-flow bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a>
+    <ul class="navbar-nav ml-auto d-none d-sm-flex">
+      <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">@lang('main.projects')</a></li>
+      <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">@lang('main.about_us')</a></li>
+      {{--        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">@lang('main.contact_us')</a></li>--}}
+    </ul>
+    <ul class="navbar-nav ml-auto d-flex d-sm-none">
+      <li class="nav-item"><span class="nav-link" onclick="openNav()"><i data-icon="menu"></i></span></li>
+    </ul>
+  </div>
+</nav>
 
 <main class="container">
   @yield('content')
@@ -92,6 +107,26 @@
         $('i[data-icon="menu"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>');
         $('i[data-icon="x"]').replaceWith('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>');
     });
+
+    let prevScrollpos = window.pageYOffset;
+    
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+      const navbar = $('#navbar');
+
+      if (currentScrollPos > 100) {
+        if (prevScrollpos > currentScrollPos) {
+          navbar.addClass('show');
+          navbar.removeClass('d-none');
+        } else {
+          navbar.removeClass('show');
+        }
+
+        prevScrollpos = currentScrollPos;
+      } else {
+        navbar.addClass('d-none');
+      }
+    }
 
 </script>
 @yield('js')
