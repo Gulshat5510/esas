@@ -391,6 +391,7 @@ main {
     h4 {
         font-family: $medium;
         margin-bottom: 10px;
+        font-size: 25px;
 
         &.heading {
             font-size: 28px;
@@ -406,7 +407,9 @@ main {
         }
     }
 }
-
+.other_works{
+    font-size: 22px;
+}
 .form-group {
     margin-bottom: 32px;
 
