@@ -22,7 +22,6 @@
     <ul class="navbar-nav ml-auto d-none d-sm-flex">
       <li class="nav-item {{ request()->is('*projects*') ? 'active':'' }}"><a class="nav-link" href="{{ route('projects') }}">@lang('main.projects')</a></li>
       <li class="nav-item {{ request()->is('*about*') ? 'active':'' }}"><a class="nav-link" href="{{ route('about') }}">@lang('main.about_us')</a></li>
-      {{--        <li class="nav-item {{ request()->is('*contact*') ? 'active':'' }}"><a class="nav-link" href="{{ route('contact.index') }}">@lang('main.contact_us')</a></li>--}}
     </ul>
     <ul class="navbar-nav ml-auto d-flex d-sm-none">
       <li class="nav-item"><span class="nav-link" onclick="openNav()"><i data-icon="menu"></i></span></li>
@@ -37,12 +36,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <div class="copyright"><span>&copy; Esas</span> <span class="dash">—</span> <span>@lang('main.branding_agency')</span></div>
+        <div class="copyright">{{ $global_arr['copyright'] }}</div>
       </div>
       <div class="col-md-6">
         <ul class="social-lists til-sm-text-right">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Behance</a></li>
+          <li><a href="{{ $global_arr['instagram'] }}">Instagram</a></li>
+          <li><a href="{{ $global_arr['behance'] }}">Behance</a></li>
           @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
             <li class="{{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }} lang">
               <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
@@ -54,39 +53,40 @@
   </div>
 </footer>
 
+{{--TODO: change noyification--}}
 <div id="notification-bg" onclick="closeNav()"></div>
 <div id="notification">
   <div class="aside d-block d-sm-none" id="menu">
-  <div class="inner">
-    <div class="side-nav">
-      <div class="float-left">
-        <a href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a>
+    <div class="inner">
+      <div class="side-nav">
+        <div class="float-left">
+          <a href="{{ route('index') }}"><img src="{{ asset('images/logo-dark.svg') }}" alt="logo"></a>
+        </div>
+        <div class="float-right">
+          <span onclick="closeNav()"><i data-icon="x"></i></span>
+        </div>
+        <div class="clearfix"></div>
       </div>
-      <div class="float-right">
-        <span onclick="closeNav()"><i data-icon="x"></i></span>
+      <div class="side-menu">
+        <ul>
+          <li class="{{ request()->is('*projects*') ? 'active':'' }}"><a href="{{ route('projects') }}">@lang('main.projects')</a></li>
+          <li class="{{ request()->is('*about*') ? 'active':'' }}"><a href="{{ route('about') }}">@lang('main.about_us')</a></li>
+        </ul>
       </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="side-menu">
-      <ul>
-        <li class="{{ request()->is('*projects*') ? 'active':'' }}"><a href="{{ route('projects') }}">@lang('main.projects')</a></li>
-        <li class="{{ request()->is('*about*') ? 'active':'' }}"><a href="{{ route('about') }}">@lang('main.about_us')</a></li>
-      </ul>
-    </div>
-    <div class="side-footer">
-      <ul>
-        <li><a href="tel:+99361256547">+993 61 25 65 47</a></li>
-        <li><a href="mailto:gurbanmw@gmail.com">gurbanmw@gmail.com</a></li>
-      </ul>
-      <div class="locale">
-        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-          <a class="{{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }}" hreflang="{{ $localeCode }}"
-             href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
-        @endforeach
+      <div class="side-footer">
+        <ul>
+          <li><a href="tel:{{ $global_arr['phone'] }}">{{ $global_arr['phone'] }}</a></li>
+          <li><a href="mailto:{{ $global_arr['email'] }}">{{ $global_arr['email'] }}</a></li>
+        </ul>
+        <div class="locale">
+          @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a class="{{ LaravelLocalization::getCurrentLocale() == $localeCode ? 'd-none' : '' }}" hreflang="{{ $localeCode }}"
+               href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['script'] }}</a>
+          @endforeach
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 
@@ -109,23 +109,23 @@
     });
 
     let prevScrollpos = window.pageYOffset;
-    
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
-      const navbar = $('#navbar');
 
-      if (currentScrollPos > 100) {
-        if (prevScrollpos > currentScrollPos) {
-          navbar.addClass('show');
-          navbar.removeClass('d-none');
+    window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+        const navbar = $('#navbar');
+
+        if (currentScrollPos > 100) {
+            if (prevScrollpos > currentScrollPos) {
+                navbar.addClass('show');
+                navbar.removeClass('d-none');
+            } else {
+                navbar.removeClass('show');
+            }
+
+            prevScrollpos = currentScrollPos;
         } else {
-          navbar.removeClass('show');
+            navbar.addClass('d-none');
         }
-
-        prevScrollpos = currentScrollPos;
-      } else {
-        navbar.addClass('d-none');
-      }
     }
 
 </script>

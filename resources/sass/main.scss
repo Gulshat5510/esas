@@ -294,12 +294,13 @@ main {
 
     .title {
       font-family: $medium;
-      font-size: 18px;
-      margin-bottom: 0;
+      font-size: 22px;
+      margin-bottom: 4px;
     }
 
     .desc {
-      font-size: 15px;
+      font-size: 16px;
+      color: #969696;
     }
   }
 }
@@ -388,9 +389,11 @@ main {
     margin-bottom: 40px;
   }
 
-  h4 {
-    font-family: $medium;
-    margin-bottom: 10px;
+
+    h4 {
+        font-family: $medium;
+        margin-bottom: 10px;
+        font-size: 25px;
 
     &.heading {
       font-size: 28px;

@@ -248,8 +248,15 @@
 @include media-breakpoint-down(sm) {
 
   // 767.98px
-  h4 {
+  h4,
+  #show h4 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  h5 {
     font-size: 20px;
+    margin-bottom: 14px;
   }
 
   .bg-light {

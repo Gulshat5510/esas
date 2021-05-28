@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <h5>@lang('main.other_works')</h5>
+    <h5 class="other_works">@lang('main.other_works')</h5>
 
     <div class="row">
       @foreach($projects as $project)

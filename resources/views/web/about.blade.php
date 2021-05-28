@@ -3,15 +3,15 @@
 @section('title') @lang('main.about_us') | @endsection
 
 @section('navbar')
-    @include('inc.navbar')
+  @include('inc.navbar')
 @endsection
 
 @section('content')
-<div class="__about col-lg-6 pl-0 mb-5">
-  @if($about)
-    <p id="desc" class="desc">{{ $about->desc }}</p>
-  @endif
-</div>
+  <div class="__about col-lg-6 pl-0 mb-5">
+    @if($about)
+      <p id="desc" class="desc">{{ $about->desc }}</p>
+    @endif
+  </div>
   <section id="about">
     @if($about)
       <div class="img-wrapper">
@@ -21,20 +21,8 @@
 
     <div class="row services">
       <div class="col-lg-6">
-      
-
         <div class="d-none d-lg-block">
-          <h5 class="contact">@lang('main.contacts')</h5>
-          <ul>
-            <li id="address">{{ $arr['address']->address }}</li>
-            <li><a href="tel:{{ $arr['phone']->data }}">{{ $arr['phone']->data }}</a></li>
-            <li><a href="mailto:{{ $arr['email']->data }}">{{ $arr['email']->data }}</a></li>
-          </ul>
-
-          <ul class="social-lists">
-            <li><a href="{{ $arr['instagram']->data }}">Instagram</a></li>
-            <li><a href="{{ $arr['behance']->data }}">Behance</a></li>
-          </ul>
+          @include('inc.contacts')
         </div>
       </div>
 

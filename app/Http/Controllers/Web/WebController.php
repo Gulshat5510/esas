@@ -25,14 +25,8 @@ class WebController extends Controller
     public function about()
     {
         $about = About::first();
-        $arr = [
-            'phone' => Contact::whereSlug('phone')->first(),
-            'email' => Contact::whereSlug('email')->first(),
-            'address' => Contact::whereSlug('address')->first(),
-            'instagram' => Contact::whereSlug('instagram')->first(),
-            'behance' => Contact::whereSlug('behance')->first()
-        ];
+        $address = Contact::whereSlug('address')->firstOrFail()->locale_data;
         
-        return view('web.about', compact('about', 'arr'));
+        return view('web.about', compact('about', 'address'));
     }
 }

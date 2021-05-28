@@ -17,7 +17,7 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->string('slug');
             $table->string('data')->nullable();
-            $table->json('address')->nullable();
+            $table->json('locale_data')->nullable();
             $table->boolean('is_social')->default(false);
             $table->timestamps();
         });

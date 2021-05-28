@@ -1,11 +1,11 @@
-<h4>@lang('main.contacts')</h4>
+<h5 class="contact">@lang('main.contacts')</h5>
 <ul>
-  <li id="address">{{ $arr['address']->address }}</li>
-  <li><a href="tel:{{ $arr['phone']->data }}">{{ $arr['phone']->data }}</a></li>
-  <li><a href="mailto:{{ $arr['email']->data }}">{{ $arr['email']->data }}</a></li>
+  <li id="address">{{ $address }}</li>
+  <li><a href="mailto:{{ $global_arr['email'] }}">{{ $global_arr['email'] }}</a></li>
+  <li><a href="tel:{{ $global_arr['phone'] }}">{{ $global_arr['phone'] }}</a></li>
 </ul>
 
 <ul class="social-lists">
-  <li><a href="{{ $arr['instagram']->data }}">Instagram</a></li>
-  <li><a href="{{ $arr['behance']->data }}">Behance</a></li>
+  <li><a href="{{ $global_arr['instagram'] }}">Instagram</a></li>
+  <li><a href="{{ $global_arr['behance'] }}">Behance</a></li>
 </ul>

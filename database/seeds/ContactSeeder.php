@@ -15,7 +15,7 @@ class ContactSeeder extends Seeder
         $arr = [
             [
                 'slug' => 'address',
-                'address' => [
+                'locale_data' => [
                     'en' => 'Asgabat 10 yyl abadancyly kochesi-47',
                     'tm' => 'Asgabat 10 yyl abadancyly kochesi-47'
                 ]
@@ -37,8 +37,16 @@ class ContactSeeder extends Seeder
                 'slug' => 'behance',
                 'data' => 'https://behance.com/esas',
                 'is_social' => true
-            ]
+            ],
+            [
+                'slug' => 'copyright',
+                'locale_data' => [
+                    'en' => 'Esas — Design & Strategy',
+                    'tm' => 'Esas — Design & Strategy'
+                ]
+            ],
         ];
+
         foreach ($arr as $item) {
             Contact::create($item);
         }
